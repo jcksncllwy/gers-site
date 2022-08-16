@@ -1,6 +1,6 @@
 import { Session, User } from '@supabase/supabase-js'
 import { useState, useEffect, FormEvent } from 'react'
-import { supabase } from './supabaseClient'
+import { supabase } from '../supabaseClient'
 
 export type Props = {
     session: Session,
