@@ -2,8 +2,15 @@ import './index.css'
 import { useState, useEffect } from 'react'
 import { supabase } from './supabaseClient'
 import { Session } from '@supabase/supabase-js'
+import {
+  BrowserRouter,
+  Routes,
+  Route,
+} from "react-router-dom";
 
-import BasicPage from './components/layouts/BasicPage'
+import Account from "./pages/Account";
+import Auth from './pages/Auth';
+import Splash from './pages/Splash';
 
 export default function App() {
   const [session, setSession] = useState<Session | null>(null)
@@ -16,7 +23,23 @@ export default function App() {
     })
   }, [])
 
+
   return (
-    <BasicPage><h1>HELLO</h1></BasicPage>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/">
+          <Route index element={<Splash />} />
+          <Route 
+            path="account" 
+            element={<Account session={session} />}
+          />
+          <Route 
+            path="auth" 
+            element={<Auth />}
+          />
+        </Route>
+      </Routes>
+    </BrowserRouter>
   )
+
 }

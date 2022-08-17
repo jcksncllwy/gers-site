@@ -3,7 +3,7 @@ import { useState, useEffect, FormEvent } from 'react'
 import { supabase } from '../supabaseClient'
 
 export type Props = {
-    session: Session,
+    session: Session | null,
     key?: User["id"]
 }
 
