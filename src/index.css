@@ -12,7 +12,15 @@ body {
   --custom-border-radius: 5px;
   --custom-spacing: 5px;
 
-  --color-primary: #289dcc;
+  --color-primary: #228fba;
+  --color-primary-dark: #114c64;
+  --color-primary-light: #12b4f4;
+
+  --text-base-size: 1rem; /* 16px */
+  --text-base-line-height: 1.5rem; /* 24px */
+
+  --text-lg-size: 1.125rem; /* 18px */
+  --teext-lg-line-height: 1.75rem; /* 28px */;
 
   --md-breakpoint: 768px;
   --fixed-menu-height: 100px;

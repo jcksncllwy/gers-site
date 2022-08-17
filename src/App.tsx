@@ -11,6 +11,7 @@ import {
 import Account from "./pages/Account";
 import Auth from './pages/Auth';
 import Splash from './pages/Splash';
+import Agenda from './pages/Agenda';
 
 export default function App() {
   const [session, setSession] = useState<Session | null>(null)
@@ -29,6 +30,10 @@ export default function App() {
       <Routes>
         <Route path="/">
           <Route index element={<Splash />} />
+          <Route 
+            path="agenda" 
+            element={<Agenda />}
+          />
           <Route 
             path="account" 
             element={<Account session={session} />}

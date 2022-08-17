@@ -1,8 +1,8 @@
 import { Link, NavLink } from "react-router-dom";
 import styled from "styled-components";
 
-const MenuBar = ()=>{
-    return(
+const MenuBar = () => {
+    return (
         <Container>
             <Inner>
                 <Logo>
@@ -11,8 +11,14 @@ const MenuBar = ()=>{
                     </Link>
                 </Logo>
                 <NavItems>
-                    <NavLink to="/account">Account</NavLink>
-                    <NavLink to="/auth">Auth</NavLink>
+                    <NavItem>
+                        <NavLink to="/agenda">Agenda</NavLink>
+                    </NavItem>
+                    <NavItem>
+                        <NavLink to="/auth">
+                            <Button>Register Now</Button>
+                        </NavLink>
+                    </NavItem>
                 </NavItems>
             </Inner>
         </Container>
@@ -54,11 +60,39 @@ const NavItems = styled.div`
     align-items: center;
 
     *:not(:last-child){
-        margin-right: 10px;
+        margin-right: 20px;
     }
+
+    
+`
+
+const NavItem = styled.div`
+    font-size: var(--text-lg-size);
+    line-height: var(--text-lg-line-height);
+    font-weight: 500;
 
     a{
         text-decoration: none;
+    }
+
+    &:hover{
+        text-decoration: underline;
+    }
+`
+
+const Button = styled.div`
+    background-color: var(--color-primary);
+    border-radius: 5px;
+    padding: 10px 20px;
+    text-shadow:0px 1px 0px #2f6627;
+    &:hover{
+        background-color: var(--color-primary-light);
+        padding: 12px 20px;
+    }
+    &:active{
+        position:relative;
+	    top:1px;
+        background-color: var(--color-primary);
     }
 `
 
