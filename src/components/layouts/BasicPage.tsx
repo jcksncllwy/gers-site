@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import MenuBar from '../molecules/MenuBar';
 
 type Props = {
     children?: React.ReactNode;
@@ -6,17 +7,25 @@ type Props = {
 
 const BasicPage = ({children}: Props)=>(
     <Container>
-        {children}
+        <MenuBar />
+        <ChildContainer>
+            {children}
+        </ChildContainer>
     </Container>
 )
 
+const ChildContainer = styled.div`
+    width: 100%;
+    max-width: var(--md-breakpoint);
+    padding-top: var(--fixed-menu-height);
+`
+
 const Container = styled.div`
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
     width: 100vw;
     height: 100vh;
-    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 `
 
 export default BasicPage;
