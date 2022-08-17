@@ -11,7 +11,6 @@ const Footer = ({children}: Props)=>{
                 {children}
             </ChildrenContainer>
             Brought to you by the <a href="https://globalearthrepairfoundation.org/">Global Earth Repair Foundation</a>
-
         </Container>
     )
 }
