@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import Footer from '../molecules/Footer';
 import MenuBar from '../molecules/MenuBar';
 
 type Props = {
@@ -11,13 +12,14 @@ const BasicPage = ({children}: Props)=>(
         <ChildContainer>
             {children}
         </ChildContainer>
+        <Footer />
     </Container>
 )
 
 const ChildContainer = styled.div`
     width: 100%;
     max-width: var(--md-breakpoint);
-    padding-top: var(--fixed-menu-height);
+    padding-top: calc(var(--fixed-menu-height) + 30px);
 `
 
 const Container = styled.div`

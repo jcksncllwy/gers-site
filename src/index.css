@@ -11,8 +11,11 @@ body {
   --custom-border: 1px solid #333;
   --custom-border-radius: 5px;
   --custom-spacing: 5px;
+
+  --color-primary: #289dcc;
+
   --md-breakpoint: 768px;
-  --fixed-menu-height: 35px;
+  --fixed-menu-height: 100px;
 
   padding: 0;
   margin: 0;
@@ -32,4 +35,8 @@ body,
   height: 100vh;
   width: 100vw;
   overflow-x: hidden;
+}
+
+img{
+  max-width: 100%;
 }
