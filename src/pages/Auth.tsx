@@ -4,6 +4,7 @@ import Button from '@mui/material/Button';
 
 import TextInput from '../components/atoms/TextInput'
 import BasicPage from '../components/layouts/BasicPage'
+import { TextField } from '@mui/material';
 
 
 export default function Auth() {
@@ -37,25 +38,7 @@ export default function Auth() {
         'Sending magic link...'
       ) : (
         <form onSubmit={handleLogin}>
-          <TextInput
-            label="Email"
-            inputID="register-email" 
-            placeholder="Your Email"
-            required
-            type="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
-          <TextInput
-            label="Name"
-            inputID="register-name" 
-            placeholder="Your Name"
-            required
-            type="text"
-            value={name}
-            onChange={(e) => setEmail(e.target.value)}
-          />
-          <Button variant="contained">Hello</Button>
+          <TextField id="email" label="Email" required variant="outlined" />
           <button aria-live="polite">
             Send magic link
           </button>
