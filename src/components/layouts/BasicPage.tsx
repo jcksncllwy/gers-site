@@ -1,34 +1,20 @@
-import styled from 'styled-components';
-import Footer from '../molecules/Footer';
-import MenuBar from '../molecules/MenuBar';
+import { Box, Container, ContainerProps } from "@mui/material";
+import { AppBar } from '../molecules/AppBar';
+
 
 type Props = {
     children?: React.ReactNode;
-}
+} & ContainerProps
 
-const BasicPage = ({children}: Props)=>(
-    <Container>
-        <MenuBar />
-        <ChildContainer>
+const BasicPage = ({ children, ...props }: Props) => (
+    <Box>
+        <AppBar />
+        <Container {...props} sx={{ paddingTop: '40px' }}>
             {children}
-        </ChildContainer>
-        <Footer />
-    </Container>
+        </Container>
+    </Box>
 )
 
-const ChildContainer = styled.div`
-    width: 100%;
-    max-width: var(--md-breakpoint);
-    padding-top: calc(var(--fixed-menu-height) + 30px);
-`
-
-const Container = styled.div`
-    width: 100vw;
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-`
 
 export default BasicPage;
 

@@ -1,17 +1,18 @@
-import { Session, User } from '@supabase/supabase-js'
-import { useState, useEffect, FormEvent } from 'react'
+import { User } from '@supabase/supabase-js'
+import { useState, useEffect, FormEvent, useContext } from 'react'
+import { SessionContext } from '../contexts/SessionContext'
 import { supabase } from '../supabaseClient'
 
 export type Props = {
-    session: Session | null,
     key?: User["id"]
 }
 
-const Account = ({ session }: Props) => {
+const Account = () => {
   const [loading, setLoading] = useState(true)
   const [username, setUsername] = useState<string | null>(null)
   const [website, setWebsite] = useState<string | null>(null)
   const [avatar_url, setAvatarUrl] = useState<string | null>(null)
+  const session = useContext(SessionContext);
 
   useEffect(() => {
     getProfile()

@@ -12,7 +12,7 @@ import Account from "./pages/Account";
 import Auth from './pages/Auth';
 import Splash from './pages/Splash';
 import Agenda from './pages/Agenda';
-import { Box } from '@mui/material';
+import { SessionContext } from './contexts/SessionContext';
 
 export default function App() {
   const [session, setSession] = useState<Session | null>(null)
@@ -20,6 +20,7 @@ export default function App() {
   useEffect(() => {
     setSession(supabase.auth.session())
 
+    // Automagically updates session state whenever a supabase call changes the session
     supabase.auth.onAuthStateChange((_event, session) => {
       setSession(session)
     })
@@ -27,25 +28,27 @@ export default function App() {
 
 
   return (
+    <SessionContext.Provider value={session}>
       <BrowserRouter>
         <Routes>
           <Route path="/">
             <Route index element={<Splash />} />
-            <Route 
-              path="agenda" 
+            <Route
+              path="agenda"
               element={<Agenda />}
             />
-            <Route 
-              path="account" 
-              element={<Account session={session} />}
+            <Route
+              path="account"
+              element={<Account />}
             />
-            <Route 
-              path="signin" 
+            <Route
+              path="signin"
               element={<Auth />}
             />
           </Route>
         </Routes>
       </BrowserRouter>
+    </SessionContext.Provider>
   )
 
 }

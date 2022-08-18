@@ -12,6 +12,10 @@ const root = ReactDOM.createRoot(
 const darkTheme = createTheme({
   palette: {
     mode: 'dark',
+    background: {
+      default: 'rgb(0, 30, 60)',
+      paper: 'rgb(0, 30, 60)' 
+    }
   },
 });
 

@@ -83,7 +83,7 @@ const DrawerAppBar = (props: Props) => {
                 {item}
               </Button>
             ))}
-            <Button variant="contained" size="large" sx={{ color: '#fff' }}>
+            <Button variant="contained" size="large" >
                 <Link to="/signin">Register Now</Link>
             </Button>
           </Box>

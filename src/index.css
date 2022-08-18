@@ -16,9 +16,6 @@ body {
 
   --md-breakpoint: 768px;
   --fixed-menu-height: 100px;
-
-  padding: 0;
-  margin: 0;
 }
 
 * {
