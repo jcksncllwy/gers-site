@@ -18,9 +18,11 @@ body {
 
   --text-base-size: 1rem; /* 16px */
   --text-base-line-height: 1.5rem; /* 24px */
+  --text-color-dark-bg: #fff;
+  --text-color-light-bg: #333;
 
   --text-lg-size: 1.125rem; /* 18px */
-  --teext-lg-line-height: 1.75rem; /* 28px */;
+  --text-lg-line-height: 1.75rem; /* 28px */;
 
   --md-breakpoint: 768px;
   --fixed-menu-height: 100px;
@@ -32,7 +34,6 @@ body {
 }
 
 * {
-  color: var(--custom-color);
   font-family: var(--custom-font-family);
   box-sizing: border-box;
 }
@@ -43,6 +44,7 @@ body,
   height: 100vh;
   width: 100vw;
   overflow-x: hidden;
+  color: var(--custom-color);
 }
 
 img{
