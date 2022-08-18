@@ -12,6 +12,7 @@ import MenuIcon from '@mui/icons-material/Menu';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
+
 import Link from '../atoms/Link';
 
 interface Props {
@@ -23,7 +24,7 @@ interface Props {
 }
 
 const drawerWidth = 240;
-const navItems = ['Home', 'About', 'Contact'];
+const navItems = ['Agenda'];
 
 const DrawerAppBar = (props: Props) => {
   const { window } = props;
@@ -55,7 +56,10 @@ const DrawerAppBar = (props: Props) => {
 
   return (
     <Box sx={{ display: 'flex' }}>
-      <AppBar component="nav">
+      <AppBar component="nav" sx={{
+        backgroundImage: "url(https://ltfowyvtpuhuazsxpcvn.supabase.co/storage/v1/object/public/public-images/starry-banner-bg.jpeg)",
+        backgroundPosition: 'center'
+       }}>
         <Toolbar>
           <IconButton
             color="inherit"
@@ -79,6 +83,9 @@ const DrawerAppBar = (props: Props) => {
                 {item}
               </Button>
             ))}
+            <Button variant="contained" size="large" sx={{ color: '#fff' }}>
+                <Link to="/register">Register Now</Link>
+            </Button>
           </Box>
         </Toolbar>
       </AppBar>

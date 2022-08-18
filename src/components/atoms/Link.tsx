@@ -12,6 +12,7 @@ const Link = ({children, ...props}: Props)=>{
 }
 
 const StyledLink = styled(RouterLink)`
+    color: inherit;
     text-decoration: none;
     &:visited{
         color: inherit;
