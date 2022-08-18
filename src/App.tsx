@@ -8,15 +8,26 @@ import {
   Route,
 } from "react-router-dom";
 
-import Account from "./pages/Account";
 import Auth from './pages/Auth';
 import Splash from './pages/Splash';
 import Agenda from './pages/Agenda';
 import { SessionContext } from './contexts/SessionContext';
+import { createTheme, CssBaseline, ThemeProvider } from '@mui/material';
+
+const darkTheme = createTheme({
+  palette: {
+    mode: 'dark',
+    background: {
+      default: 'rgb(0, 30, 60)',
+      paper: 'rgb(0, 30, 60)'
+    }
+  },
+});
 
 export default function App() {
   const [session, setSession] = useState<Session | null>(null)
 
+  // Session Management
   useEffect(() => {
     setSession(supabase.auth.session())
 
@@ -28,27 +39,26 @@ export default function App() {
 
 
   return (
-    <SessionContext.Provider value={session}>
-      <BrowserRouter>
-        <Routes>
-          <Route path="/">
-            <Route index element={<Splash />} />
-            <Route
-              path="agenda"
-              element={<Agenda />}
-            />
-            <Route
-              path="account"
-              element={<Account />}
-            />
-            <Route
-              path="signin"
-              element={<Auth />}
-            />
-          </Route>
-        </Routes>
-      </BrowserRouter>
-    </SessionContext.Provider>
+    <ThemeProvider theme={darkTheme}>
+      <CssBaseline />
+      <SessionContext.Provider value={session}>
+        <BrowserRouter>
+          <Routes>
+            <Route path="/">
+              <Route index element={<Splash />} />
+              <Route
+                path="signin"
+                element={<Auth />}
+              />
+              <Route
+                path="agenda"
+                element={<Agenda />}
+              />
+            </Route>
+          </Routes>
+        </BrowserRouter>
+      </SessionContext.Provider>
+    </ThemeProvider>
   )
 
 }

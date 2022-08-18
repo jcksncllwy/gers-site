@@ -3,28 +3,15 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
 import App from './App';
-import { createTheme, CssBaseline, ThemeProvider } from '@mui/material';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 
-const darkTheme = createTheme({
-  palette: {
-    mode: 'dark',
-    background: {
-      default: 'rgb(0, 30, 60)',
-      paper: 'rgb(0, 30, 60)' 
-    }
-  },
-});
 
 root.render(
   <React.StrictMode>
-    <ThemeProvider theme={darkTheme}>
-      <CssBaseline />
       <App />
-    </ThemeProvider>
   </React.StrictMode>
 );
 

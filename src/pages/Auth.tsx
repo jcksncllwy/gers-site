@@ -1,4 +1,4 @@
-import { FormEvent, useContext, useState } from 'react'
+import { useContext, useState } from 'react'
 import { supabase } from '../supabaseClient'
 
 import BasicPage from '../components/layouts/BasicPage'
@@ -6,7 +6,6 @@ import { Box, Card, CardContent, Paper, styled, Typography } from '@mui/material
 import AttendeeRegistrationForm, { Fields } from '../components/organisms/AttendeeRegistrationForm';
 import { SessionContext } from '../contexts/SessionContext';
 import { User } from '@supabase/supabase-js';
-import { ContactlessOutlined } from '@mui/icons-material';
 
 export default function Auth() {
   const [loading, setLoading] = useState(false)
@@ -43,7 +42,7 @@ export default function Auth() {
     const {email, password} = fields;
     try {
       setLoading(true)
-      const { user, error } = await supabase.auth.signUp({email, password})
+      const { user, error } = await supabase.auth.signIn({email, password})
       console.log(`User: ${user}`);
       if (error) throw error
       if(user){
