@@ -8,6 +8,7 @@ import { User } from '@supabase/supabase-js';
 import { cvent, admissionItems } from '../../APIClients/cventClient';
 import PaymentForm from './PaymentForm';
 import Review from './Review';
+import { PayPalStep } from './PayPalStep';
 
 const steps = ['Contact info', 'Payment details', 'Review your order'];
 
@@ -24,7 +25,6 @@ export default function Register() {
   const [activeStep, setActiveStep] = useState(0);
   const [cventToken, setCventToken] = useState('');
   const [contactInfo, setContactInfo] = useState<CventContactInfo | null>(null);
-  const [cventContact, setCventContact] = useState<{ id: string } | null>(null);
   const [donationAmount, setDonationAmount] = useState<number>(0);
 
   useEffect(() => {
@@ -75,14 +75,15 @@ export default function Register() {
       if (user) {
         await updateSupabaseProfile(user, fields, contact.id)
       }
+      await addAttendee(contact, admissionItems.free.id);
     } catch (error: any) {
       console.log(error)
     }
   }
 
-  const addAttendee = async (admissionItemID: string) => {
-    if (cventContact) {
-      await cvent.addAttendeeToSummit(cventToken, cventContact.id, admissionItemID)
+  const addAttendee = async (contact: CventContactInfo, admissionItemID: string) => {
+    if (contact) {
+      await cvent.addAttendeeToSummit(cventToken, contact.id, admissionItemID)
     } else {
       throw new Error("Missing Cvent Contact");
     }
@@ -102,8 +103,7 @@ export default function Register() {
           }} />
         );
       case 1:
-        return <PaymentForm onSubmit={({ amount }) => {
-          setDonationAmount(Number(amount));
+        return <PayPalStep onSubmit={() => {
           nextStep();
         }} />;
       case 2:
