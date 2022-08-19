@@ -31,18 +31,19 @@ export default function Register() {
   const user = useContext(UserContext);
 
   useEffect(() => {
-
     const cventInit = async () => {
       const accessToken = await cvent.fetchToken();
       setCventToken(accessToken);
     }
     cventInit();
+  }, [])
 
+  useEffect(()=>{
     if(user){
       console.log("Existing User Found")
       setActiveStep(1);
     }
-  }, [])
+  }, [user])
 
   const updateSupabaseProfile = async (user: User, { firstName, lastName, orgName, title, email }: Fields, cventContactID: string) => {
     try {
