@@ -1,6 +1,6 @@
 import './index.css'
 import { useState, useEffect } from 'react'
-import { supabase } from './supabaseClient'
+import { supabase } from './APIClients/supabaseClient'
 import { Session } from '@supabase/supabase-js'
 import {
   BrowserRouter,

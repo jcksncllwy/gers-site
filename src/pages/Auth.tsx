@@ -1,17 +1,27 @@
-import { useContext, useState } from 'react'
-import { supabase } from '../supabaseClient'
+import { useEffect, useState } from 'react'
+import { supabase } from '../APIClients/supabaseClient'
 
 import BasicPage from '../components/layouts/BasicPage'
-import { Box, Card, CardContent, Paper, styled, Typography } from '@mui/material';
+import { Box, Card, CardContent, Typography } from '@mui/material';
 import AttendeeRegistrationForm, { Fields } from '../components/organisms/AttendeeRegistrationForm';
-import { SessionContext } from '../contexts/SessionContext';
 import { User } from '@supabase/supabase-js';
+import { cvent } from '../APIClients/cventClient';
 
 export default function Auth() {
   const [loading, setLoading] = useState(false)
-  const session = useContext(SessionContext);
+  const [cventToken, setCventToken] = useState(null);
 
-  const updateProfile = async (user: User, {firstName, lastName, orgName, title, email}: Fields) => {
+  useEffect(() => {
+    console.log(`useEffect`)
+    const cventInit = async () => {
+      const accessToken = await cvent.fetchToken();
+      setCventToken(accessToken);
+      const event = await cvent.getSummitEvent(accessToken);
+    }
+    cventInit();
+  }, [])
+
+  const updateProfile = async (user: User, { firstName, lastName, orgName, title, email }: Fields) => {
     try {
       setLoading(true)
 
@@ -39,13 +49,13 @@ export default function Auth() {
   }
 
   const handleSignUp = async (fields: Fields) => {
-    const {email, password} = fields;
+    const { email, password } = fields;
     try {
       setLoading(true)
-      const { user, error } = await supabase.auth.signIn({email, password})
+      const { user, error } = await supabase.auth.signIn({ email, password })
       console.log(`User: ${user}`);
       if (error) throw error
-      if(user){
+      if (user) {
         await updateProfile(user, fields)
       }
     } catch (error: any) {
