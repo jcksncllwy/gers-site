@@ -12,9 +12,10 @@ import Review from './Review';
 const steps = ['Contact info', 'Payment details', 'Review your order'];
 
 export default function Register() {
-  const [activeStep, setActiveStep] = useState(0);
+  const [activeStep, setActiveStep] = useState(1);
   const [cventToken, setCventToken] = useState('');
   const [cventContact, setCventContact] = useState<{ id: string } | null>(null);
+  const [donationAmount, setDonationAmount] = useState<number>(0);
 
   useEffect(() => {
     const cventInit = async () => {
@@ -91,9 +92,12 @@ export default function Register() {
           }} />
         );
       case 1:
-        return <PaymentForm />;
+        return <PaymentForm onSubmit={({amount})=>{
+          setDonationAmount(Number(amount));
+          nextStep();
+        }} />;
       case 2:
-        return <Review />;
+        return <Review donationAmount={donationAmount} />;
       default:
         throw new Error('Unknown step');
     }

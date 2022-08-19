@@ -90,7 +90,6 @@ export const cvent = {
         const payload = await response.json()
         return payload[0].data;
     }
-
 }
 
 export const admissionItems = {
