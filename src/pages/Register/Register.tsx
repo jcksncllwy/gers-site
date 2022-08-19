@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import { supabase } from '../../APIClients/supabaseClient'
 
 import BasicPage from '../../components/layouts/BasicPage'
@@ -9,8 +9,10 @@ import { cvent, admissionItems } from '../../APIClients/cventClient';
 import PaymentForm from './PaymentForm';
 import Review from './Review';
 import { PayPalStep } from './PayPalStep';
+import { UserContext } from '../../contexts/UserContext';
+import { Confirmation } from './Confirmation';
 
-const steps = ['Contact info', 'Payment details', 'Review your order'];
+const steps = ['Contact info', 'Payment details', 'Confirmation'];
 
 export type CventContactInfo = {
   firstName: string,
@@ -26,13 +28,20 @@ export default function Register() {
   const [cventToken, setCventToken] = useState('');
   const [contactInfo, setContactInfo] = useState<CventContactInfo | null>(null);
   const [donationAmount, setDonationAmount] = useState<number>(0);
+  const user = useContext(UserContext);
 
   useEffect(() => {
+
     const cventInit = async () => {
       const accessToken = await cvent.fetchToken();
       setCventToken(accessToken);
     }
     cventInit();
+
+    if(user){
+      console.log("Existing User Found")
+      setActiveStep(1);
+    }
   }, [])
 
   const updateSupabaseProfile = async (user: User, { firstName, lastName, orgName, title, email }: Fields, cventContactID: string) => {
@@ -107,9 +116,7 @@ export default function Register() {
           nextStep();
         }} />;
       case 2:
-        return <Review contactInfo={contactInfo} donationAmount={donationAmount} onSubmit={() => {
-          console.log('Submit')
-        }} />;
+        return <Confirmation />
       default:
         throw new Error('Unknown step');
     }
