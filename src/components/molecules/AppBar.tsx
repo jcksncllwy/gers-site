@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { useContext, useEffect, useState } from 'react'
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Divider from '@mui/material/Divider';
@@ -14,6 +15,7 @@ import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 
 import Link from '../atoms/Link';
+import { UserContext } from '../../contexts/UserContext';
 
 interface Props {
   /**
@@ -29,6 +31,7 @@ const navItems = ['Agenda'];
 const DrawerAppBar = (props: Props) => {
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
+  const user = useContext(UserContext);
 
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
@@ -83,9 +86,13 @@ const DrawerAppBar = (props: Props) => {
                 {item}
               </Button>
             ))}
-            <Button variant="contained" size="large" >
-                <Link to="/register">Register Now</Link>
-            </Button>
+            { user?
+              null
+              :
+              <Button variant="contained" size="large" >
+                  <Link to="/register">Register Now</Link>
+              </Button>
+            }
           </Box>
         </Toolbar>
       </AppBar>
