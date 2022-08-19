@@ -11,9 +11,19 @@ import Review from './Review';
 
 const steps = ['Contact info', 'Payment details', 'Review your order'];
 
+export type CventContactInfo = {
+  firstName: string,
+  lastName: string,
+  email: string,
+  company: string,
+  title: string,
+  id: string
+}
+
 export default function Register() {
-  const [activeStep, setActiveStep] = useState(1);
+  const [activeStep, setActiveStep] = useState(0);
   const [cventToken, setCventToken] = useState('');
+  const [contactInfo, setContactInfo] = useState<CventContactInfo | null>(null);
   const [cventContact, setCventContact] = useState<{ id: string } | null>(null);
   const [donationAmount, setDonationAmount] = useState<number>(0);
 
@@ -61,7 +71,7 @@ export default function Register() {
         company: orgName,
         title
       })
-      setCventContact(contact);
+      setContactInfo(contact);
       if (user) {
         await updateSupabaseProfile(user, fields, contact.id)
       }
@@ -92,12 +102,14 @@ export default function Register() {
           }} />
         );
       case 1:
-        return <PaymentForm onSubmit={({amount})=>{
+        return <PaymentForm onSubmit={({ amount }) => {
           setDonationAmount(Number(amount));
           nextStep();
         }} />;
       case 2:
-        return <Review donationAmount={donationAmount} />;
+        return <Review contactInfo={contactInfo} donationAmount={donationAmount} onSubmit={() => {
+          console.log('Submit')
+        }} />;
       default:
         throw new Error('Unknown step');
     }
