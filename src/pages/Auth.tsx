@@ -5,26 +5,23 @@ import BasicPage from '../components/layouts/BasicPage'
 import { Box, Card, CardContent, Typography } from '@mui/material';
 import AttendeeRegistrationForm, { Fields } from '../components/organisms/AttendeeRegistrationForm';
 import { User } from '@supabase/supabase-js';
-import { cvent } from '../APIClients/cventClient';
+import { cvent, admissionItems } from '../APIClients/cventClient';
 
 export default function Auth() {
   const [loading, setLoading] = useState(false)
-  const [cventToken, setCventToken] = useState(null);
+  const [cventToken, setCventToken] = useState('');
 
   useEffect(() => {
     console.log(`useEffect`)
     const cventInit = async () => {
       const accessToken = await cvent.fetchToken();
-      setCventToken(accessToken);
-      const event = await cvent.getSummitEvent(accessToken);
+      setCventToken(accessToken);      
     }
     cventInit();
   }, [])
 
-  const updateProfile = async (user: User, { firstName, lastName, orgName, title, email }: Fields) => {
+  const updateSupabaseProfile = async (user: User, { firstName, lastName, orgName, title, email }: Fields) => {
     try {
-      setLoading(true)
-
       const updates = {
         id: user.id,
         first_name: firstName,
@@ -43,25 +40,29 @@ export default function Auth() {
       }
     } catch (error: any) {
       console.log(error)
-    } finally {
-      setLoading(false)
     }
   }
 
   const handleSignUp = async (fields: Fields) => {
-    const { email, password } = fields;
+    const { firstName, lastName, orgName, title, email, password } = fields;
     try {
-      setLoading(true)
-      const { user, error } = await supabase.auth.signIn({ email, password })
-      console.log(`User: ${user}`);
+      const { user, error } = await supabase.auth.signUp({ email, password })
       if (error) throw error
       if (user) {
-        await updateProfile(user, fields)
+        await updateSupabaseProfile(user, fields)
+        const cventContact = await cvent.createContact(cventToken, {
+          firstName,
+          lastName,
+          email,
+          company: orgName,
+          title
+        })
+        console.log(`contact: ${JSON.stringify(cventContact, null, 4)}`);
+
+        await cvent.addAttendeeToSummit(cventToken, cventContact.id, admissionItems.free.id)
       }
     } catch (error: any) {
       console.log(error)
-    } finally {
-      setLoading(false)
     }
   }
 

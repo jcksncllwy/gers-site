@@ -1,3 +1,4 @@
+import { Type } from "typescript";
 
 function utf8_to_b64(str: string) {
     return window.btoa(unescape(encodeURIComponent(str)));
@@ -17,6 +18,15 @@ const listEventsPath = 'events';
 const listEventsURL = new URL(`${apiVersion}/${listEventsPath}`, apiHostname)
 const getSummitEventURL = new URL(`${apiVersion}/${listEventsPath}/${summitEventID}`, apiHostname)
 
+const attendeesPath = 'attendees';
+const attendeesURL = new URL(`${apiVersion}/${attendeesPath}`, apiHostname)
+
+type contactInfo = {
+    [key: string]: any,
+    email: string
+}
+const contactsPath = 'contacts'
+const contactsURL = new URL(`${apiVersion}/${contactsPath}`, apiHostname)
 
 export const cvent = {
     fetchToken: async () => {
@@ -39,7 +49,6 @@ export const cvent = {
             }
         });
         const payload = await response.json()
-        console.log(JSON.stringify(payload, null, 4));
         return payload;
     },
     getSummitEvent: async (token: string) => {
@@ -50,8 +59,58 @@ export const cvent = {
             }
         });
         const payload = await response.json()
+        return payload;
+    },
+    addAttendeeToSummit: async (token: string, contactID: string, admissionItemID: string) => {
+        const response = await fetch(attendeesURL, {
+            method: 'POST',
+            headers: {
+                Authorization: `Bearer ${token}`,
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify([{
+                status: "Accepted",
+                event: { id: summitEventID },
+                contact: { id: contactID },
+                admissionItem: { id: admissionItemID }
+            }])
+        });
+        const payload = await response.json()
         console.log(JSON.stringify(payload, null, 4));
         return payload;
+    },
+    createContact: async (token: string, contactInfo: contactInfo) => {
+        const response = await fetch(contactsURL, {
+            method: 'POST',
+            headers: {
+                Authorization: `Bearer ${token}`,
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify([contactInfo])
+        });
+        const payload = await response.json()
+        return payload[0].data;
     }
-    
+
 }
+
+export const admissionItems = {
+    free: {
+        id: '996552ea-16db-404c-b6e6-94e2efe1cf60'
+    },
+    twentyFive: {
+        id: '3898a6ee-5608-42dd-8744-f6b23dff3661'
+    },
+    fifty: {
+        id: '3d1fb5e1-83d6-469d-abe8-7f3aa506c1aa'
+    },
+    oneHundred: {
+        id: 'f1b60802-ba44-4708-bc5c-a3b7cbba2070'
+    },
+    custom: {
+        id: '996552ea-16db-404c-b6e6-94e2efe1cf60'
+    }
+}
+
+
+

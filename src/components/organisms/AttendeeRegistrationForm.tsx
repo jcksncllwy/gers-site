@@ -25,6 +25,7 @@ const AttendeeRegistrationForm = ({ onSubmit }: Props) => {
     const [title, setTitle] = useState('')
 
     const handleSubmissionAttempt = (e: FormEvent) => {
+        e.preventDefault();
         onSubmit({
             firstName,
             lastName,
