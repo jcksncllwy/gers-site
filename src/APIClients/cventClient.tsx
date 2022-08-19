@@ -76,7 +76,6 @@ export const cvent = {
             }])
         });
         const payload = await response.json()
-        console.log(JSON.stringify(payload, null, 4));
         return payload;
     },
     createContact: async (token: string, contactInfo: contactInfo) => {

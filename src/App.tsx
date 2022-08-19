@@ -8,7 +8,7 @@ import {
   Route,
 } from "react-router-dom";
 
-import Auth from './pages/Auth';
+import Register from './pages/Register/Register';
 import Splash from './pages/Splash';
 import Agenda from './pages/Agenda';
 import { SessionContext } from './contexts/SessionContext';
@@ -47,8 +47,8 @@ export default function App() {
             <Route path="/">
               <Route index element={<Splash />} />
               <Route
-                path="signin"
-                element={<Auth />}
+                path="register"
+                element={<Register />}
               />
               <Route
                 path="agenda"

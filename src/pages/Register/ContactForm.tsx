@@ -1,6 +1,7 @@
-import { Box, Button, TextField } from "@mui/material";
+import { Box, TextField, Typography } from "@mui/material";
+import LoadingButton from '@mui/lab/LoadingButton';
 import { default as Grid } from "@mui/material/Unstable_Grid2";
-import { FormEvent, FormEventHandler, useState } from "react";
+import { FormEvent, useState } from "react";
 
 
 export type Props = {
@@ -16,7 +17,8 @@ export type Fields = {
     title: string
 }
 
-const AttendeeRegistrationForm = ({ onSubmit }: Props) => {
+const ContactForm = ({ onSubmit }: Props) => {
+    const [loading, setLoading] = useState(false)
     const [firstName, setFirstName] = useState('')
     const [lastName, setLastName] = useState('')
     const [email, setEmail] = useState('')
@@ -24,9 +26,10 @@ const AttendeeRegistrationForm = ({ onSubmit }: Props) => {
     const [orgName, setOrgName] = useState('')
     const [title, setTitle] = useState('')
 
-    const handleSubmissionAttempt = (e: FormEvent) => {
+    const handleSubmissionAttempt = async (e: FormEvent) => {
         e.preventDefault();
-        onSubmit({
+        setLoading(true);
+        await onSubmit({
             firstName,
             lastName,
             email,
@@ -34,6 +37,7 @@ const AttendeeRegistrationForm = ({ onSubmit }: Props) => {
             orgName,
             title
         })
+        setLoading(false);
     }
 
     return (
@@ -42,6 +46,9 @@ const AttendeeRegistrationForm = ({ onSubmit }: Props) => {
             autoComplete="off"
             onSubmit={handleSubmissionAttempt}
         >
+            <Typography variant="h6" gutterBottom>
+                Contact Info
+            </Typography>
             <Grid container spacing={2}>
                 <Grid xs={12} sm={6}>
                     <TextField
@@ -50,7 +57,7 @@ const AttendeeRegistrationForm = ({ onSubmit }: Props) => {
                         required
                         fullWidth
                         variant="standard"
-                        onChange={(e)=>setFirstName(e.target.value)}
+                        onChange={(e) => setFirstName(e.target.value)}
                         value={firstName}
                     />
                 </Grid>
@@ -61,7 +68,7 @@ const AttendeeRegistrationForm = ({ onSubmit }: Props) => {
                         required
                         fullWidth
                         variant="standard"
-                        onChange={(e)=>setLastName(e.target.value)}
+                        onChange={(e) => setLastName(e.target.value)}
                         value={lastName}
                     />
                 </Grid>
@@ -72,7 +79,7 @@ const AttendeeRegistrationForm = ({ onSubmit }: Props) => {
                         required
                         fullWidth
                         variant="standard"
-                        onChange={(e)=>setEmail(e.target.value)}
+                        onChange={(e) => setEmail(e.target.value)}
                         value={email}
                     />
                 </Grid>
@@ -85,7 +92,7 @@ const AttendeeRegistrationForm = ({ onSubmit }: Props) => {
                         required
                         fullWidth
                         variant="standard"
-                        onChange={(e)=>setPassword(e.target.value)}
+                        onChange={(e) => setPassword(e.target.value)}
                         value={password}
                     />
                 </Grid>
@@ -95,7 +102,7 @@ const AttendeeRegistrationForm = ({ onSubmit }: Props) => {
                         label="Organization"
                         fullWidth
                         variant="standard"
-                        onChange={(e)=>setOrgName(e.target.value)}
+                        onChange={(e) => setOrgName(e.target.value)}
                         value={orgName}
                     />
                 </Grid>
@@ -105,12 +112,18 @@ const AttendeeRegistrationForm = ({ onSubmit }: Props) => {
                         label="Title"
                         fullWidth
                         variant="standard"
-                        onChange={(e)=>setTitle(e.target.value)}
+                        onChange={(e) => setTitle(e.target.value)}
                         value={title}
                     />
                 </Grid>
-                <Grid xs={12} sx={{textAlign: 'right'}}>
-                    <Button type="submit" variant="contained">Next</Button>
+                <Grid xs={12} sx={{ textAlign: 'right' }}>
+                    <LoadingButton
+                        type="submit"
+                        variant="contained"
+                        loading={loading}
+                    >
+                        Next
+                    </LoadingButton>
                 </Grid>
             </Grid>
 
@@ -118,4 +131,4 @@ const AttendeeRegistrationForm = ({ onSubmit }: Props) => {
     )
 }
 
-export default AttendeeRegistrationForm;
+export default ContactForm;
