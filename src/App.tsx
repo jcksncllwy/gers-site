@@ -52,6 +52,7 @@ export default function App() {
       if (session) {
         initUser(session);
       }
+      if (_event == 'SIGNED_OUT') setUser(null);
     })
   }, [])
 

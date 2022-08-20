@@ -13,9 +13,12 @@ import MenuIcon from '@mui/icons-material/Menu';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
+import { LoadingButton } from "@mui/lab";
+import { useNavigate } from "react-router-dom"
 
 import Link from '../atoms/Link';
 import { UserContext } from '../../contexts/UserContext';
+import { supabase } from '../../APIClients/supabaseClient';
 
 interface Props {
   /**
@@ -31,6 +34,8 @@ const navItems = ['Agenda'];
 const DrawerAppBar = (props: Props) => {
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
+  const [loggingOut, setLoggingOut] = useState(false);
+  const navigate = useNavigate()
   const user = useContext(UserContext);
 
   const handleDrawerToggle = () => {
@@ -62,7 +67,7 @@ const DrawerAppBar = (props: Props) => {
       <AppBar component="nav" sx={{
         backgroundImage: "url(https://ltfowyvtpuhuazsxpcvn.supabase.co/storage/v1/object/public/public-images/starry-banner-bg.jpeg)",
         backgroundPosition: 'center'
-       }}>
+      }}>
         <Toolbar>
           <IconButton
             color="inherit"
@@ -86,11 +91,21 @@ const DrawerAppBar = (props: Props) => {
                 {item}
               </Button>
             ))}
-            { user?
-              null
+            {user ?
+              <LoadingButton
+                variant="outlined"
+                loading={loggingOut}
+                onClick={async () => {
+                  setLoggingOut(true);
+                  const { error } = await supabase.auth.signOut()
+                  console.log(error);
+                  navigate("/")
+                }}>
+                Logout
+              </LoadingButton>
               :
               <Button variant="contained" size="large" >
-                  <Link to="/register">Register Now</Link>
+                <Link to="/register">Register Now</Link>
               </Button>
             }
           </Box>
