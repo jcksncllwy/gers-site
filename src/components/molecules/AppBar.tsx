@@ -17,7 +17,7 @@ import { LoadingButton } from "@mui/lab";
 import { useNavigate } from "react-router-dom"
 
 import Link from '../atoms/Link';
-import { UserContext } from '../../contexts/UserContext';
+import { ProfileContext, ContextType as ProfileContextType } from '../../contexts/ProfileContext';
 import { supabase } from '../../APIClients/supabaseClient';
 
 interface Props {
@@ -36,7 +36,7 @@ const DrawerAppBar = (props: Props) => {
   const [mobileOpen, setMobileOpen] = React.useState(false);
   const [loggingOut, setLoggingOut] = useState(false);
   const navigate = useNavigate()
-  const user = useContext(UserContext);
+  const [profile] = useContext(ProfileContext) as ProfileContextType;
 
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
@@ -91,7 +91,7 @@ const DrawerAppBar = (props: Props) => {
                 {item}
               </Button>
             ))}
-            {user ?
+            {profile ?
               <LoadingButton
                 variant="outlined"
                 loading={loggingOut}

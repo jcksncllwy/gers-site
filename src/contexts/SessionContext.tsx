@@ -1,4 +1,7 @@
-import { Session } from "@supabase/supabase-js";
 import React from "react";
+import { Session } from "@supabase/supabase-js";
+import { WriteableContextType } from "./types";
 
-export const SessionContext = React.createContext<Session | null>(null);
+type ContextType = WriteableContextType<Session | null>
+
+export const SessionContext = React.createContext<ContextType | null>(null);

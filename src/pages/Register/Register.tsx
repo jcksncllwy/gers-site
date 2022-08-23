@@ -1,15 +1,12 @@
 import { useContext, useEffect, useState } from 'react'
-import { supabase } from '../../APIClients/supabaseClient'
+import { supabase, updateProfile } from '../../APIClients/supabaseClient'
 
 import BasicPage from '../../components/layouts/BasicPage'
 import { Box, Card, CardContent, Step, StepLabel, Stepper, Typography } from '@mui/material';
 import ContactForm, { Fields } from './ContactForm';
-import { User } from '@supabase/supabase-js';
 import { cvent, admissionItems } from '../../APIClients/cventClient';
-import PaymentForm from './PaymentForm';
-import Review from './Review';
 import { PayPalStep } from './PayPalStep';
-import { UserContext } from '../../contexts/UserContext';
+import { ProfileContext, ContextType as ProfileContextType } from '../../contexts/ProfileContext';
 import { Confirmation } from './Confirmation';
 
 const steps = ['Contact info', 'Payment details', 'Confirmation'];
@@ -26,9 +23,7 @@ export type CventContactInfo = {
 export default function Register() {
   const [activeStep, setActiveStep] = useState(0);
   const [cventToken, setCventToken] = useState('');
-  const [contactInfo, setContactInfo] = useState<CventContactInfo | null>(null);
-  const [donationAmount, setDonationAmount] = useState<number>(0);
-  const user = useContext(UserContext);
+  const [profile, setProfile] = useContext(ProfileContext) as ProfileContextType;
 
   useEffect(() => {
     const cventInit = async () => {
@@ -38,57 +33,31 @@ export default function Register() {
     cventInit();
   }, [])
 
-  useEffect(()=>{
-    if(user){
+  useEffect(() => {
+    if (profile) {
       console.log("Existing User Found")
       setActiveStep(1);
     }
-  }, [user])
-
-  const updateSupabaseProfile = async (user: User, { firstName, lastName, orgName, title, email }: Fields, cventContactID: string) => {
-    try {
-      const updates = {
-        id: user.id,
-        first_name: firstName,
-        last_name: lastName,
-        org: orgName,
-        title,
-        cvent_contact_id: cventContactID,
-        updated_at: new Date(),
-      }
-
-      let { error } = await supabase.from('profiles').upsert(updates, {
-        returning: 'minimal', // Don't return the value after inserting
-      })
-
-      if (error) {
-        throw error
-      }
-    } catch (error: any) {
-      console.log(error)
-    }
-  }
+  }, [profile])
 
   const handleSignUp = async (fields: Fields) => {
     const { firstName, lastName, orgName, title, email, password } = fields;
-    try {
-      const { user, error } = await supabase.auth.signUp({ email, password })
-      if (error) throw error
-      const contact = await cvent.createContact(cventToken, {
-        firstName,
-        lastName,
-        email,
-        company: orgName,
-        title
-      })
-      setContactInfo(contact);
-      if (user) {
-        await updateSupabaseProfile(user, fields, contact.id)
-      }
-      await addAttendee(contact, admissionItems.free.id);
-    } catch (error: any) {
-      console.log(error)
-    }
+    const { session, error } = await supabase.auth.signUp({ email, password })
+    if (error) throw error
+
+    const contact = await cvent.createContact(cventToken, {
+      firstName,
+      lastName,
+      email,
+      company: orgName,
+      title
+    })
+
+    // No need to wait for this async call to finish
+    addAttendee(contact, admissionItems.free.id)
+
+    const updatedProfile = await updateProfile(session, fields);
+    setProfile(updatedProfile)
   }
 
   const addAttendee = async (contact: CventContactInfo, admissionItemID: string) => {
