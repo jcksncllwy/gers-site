@@ -16,8 +16,6 @@ export const Canvas = (props: Props) => {
   const canvasRef = useRef<HTMLCanvasElement>(null)
   const boxRef = useRef<HTMLElement>(null)
 
-  
-  
   useEffect(() => {
     
     const canvas = canvasRef.current!

@@ -51,10 +51,10 @@ export const StarField = (props: BoxProps) => {
         prevTime = time;
         moveStars(elapsed * 0.1, frameCount);
         const [w, h] = [cref.getBoundingClientRect().width, cref.getBoundingClientRect().height]
-        const [cx, cy] = [w / 2, h / 2]
+        const [cx, cy] = [w*(5/8), h / 2]
 
         //Clear
-        c.fillStyle = `rgba(0,0,0,0.1)`;
+        c.fillStyle = `rgba(0, 30, 60, 0.1)`;
         c.fillRect(0, 0, w, h);
 
         stars.forEach((star) => {

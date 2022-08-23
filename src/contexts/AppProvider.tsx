@@ -1,23 +1,14 @@
-import { createTheme, CssBaseline, ThemeProvider } from "@mui/material";
-import { Session, User } from "@supabase/supabase-js";
-import React, { useContext, useEffect, useState } from "react";
+import { CssBaseline, ThemeProvider } from "@mui/material";
+import { Session } from "@supabase/supabase-js";
+import React, { useEffect, useState } from "react";
 import { supabase, getProfile, SupabaseProfile } from "../APIClients/supabaseClient";
+import { theme } from "../styling/theme";
 import { ProfileContext } from "./ProfileContext";
 import { SessionContext } from "./SessionContext";
 
 export type Props = {
     children: React.ReactNode;
 }
-
-const darkTheme = createTheme({
-    palette: {
-        mode: 'dark',
-        background: {
-            default: 'rgb(0, 30, 60)',
-            paper: 'rgb(0, 30, 60)'
-        }
-    },
-});
 
 /**
  * Aggregates all app-level contexts into one wrapper provider
@@ -51,7 +42,7 @@ export const AppProvider = ({ children }: Props) => {
     }, [])
 
     return (
-        <ThemeProvider theme={darkTheme}>
+        <ThemeProvider theme={theme}>
             <CssBaseline />
             <ProfileContext.Provider value={[profile, setProfile]}>
                 <SessionContext.Provider value={[session, setSession]}>
