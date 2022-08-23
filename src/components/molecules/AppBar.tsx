@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useContext, useEffect, useState } from 'react'
+import { useContext, useState } from 'react'
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Divider from '@mui/material/Divider';
@@ -19,6 +19,7 @@ import { useNavigate } from "react-router-dom"
 import Link from '../atoms/Link';
 import { ProfileContext, ContextType as ProfileContextType } from '../../contexts/ProfileContext';
 import { supabase } from '../../APIClients/supabaseClient';
+import { Container } from '@mui/material';
 
 interface Props {
   /**
@@ -65,9 +66,20 @@ const DrawerAppBar = (props: Props) => {
   return (
     <Box sx={{ display: 'flex' }}>
       <AppBar component="nav" sx={{
-        backgroundImage: "url(https://ltfowyvtpuhuazsxpcvn.supabase.co/storage/v1/object/public/public-images/starry-banner-bg.jpeg)",
-        backgroundPosition: 'center'
+        backgroundColor: 'transparent',
+        "&:before": {
+          content: '""',
+          backgroundImage: "url(https://ltfowyvtpuhuazsxpcvn.supabase.co/storage/v1/object/public/public-images/starry-banner-bg.jpeg)",
+          backgroundPosition: 'center',
+          position: 'absolute',
+          top: 0,
+          right: 0,
+          bottom: 0,
+          left: 0,
+          opacity: 0.75
+        }
       }}>
+        <Container sx={{p:{xs:0, sm:0}}}>
         <Toolbar>
           <IconButton
             color="inherit"
@@ -110,6 +122,7 @@ const DrawerAppBar = (props: Props) => {
             }
           </Box>
         </Toolbar>
+        </Container>
       </AppBar>
       <Box component="nav">
         <Drawer
