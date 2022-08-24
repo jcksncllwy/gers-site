@@ -24,7 +24,6 @@ export const WebGLGlobe = ({boxProps}: Props) => {
         //Resizing
         const handleResize = () => {
             const box = boxRef.current!
-            const globe = globeEl.current! as any;
             setDimensions({width: box.offsetWidth, height: box.offsetHeight})
         }
         const resizeObserver = new ResizeObserver(handleResize)

@@ -30,7 +30,7 @@ interface Props {
 }
 
 const drawerWidth = 240;
-const navItems = ['Agenda'];
+const navItems: string[] = [];
 
 type NavLinkProps = { children: React.ReactNode, underline?: boolean }
 const NavLink = ({ children, underline }: NavLinkProps) => {

@@ -38,10 +38,10 @@ export const Speaker = ({ imageURL, name, title, subtitle }: Props) => {
                 }}>
                 </Box>
             </Box>
-            <Box sx={{ zIndex: '3' }}>
-                <Typography textAlign="center" sx={{ pt: 6 }} variant="h4">{name}</Typography>
-                <Typography textAlign="center" variant="h5">{title}</Typography>
-                <Typography textAlign="center" variant="h5">{subtitle}</Typography>
+            <Box sx={{ position: "relative", zIndex: '3' }}>
+                <Typography textAlign="center" sx={{ pt: 6 }} fontSize="1.5rem" fontWeight={700}>{name}</Typography>
+                <Typography textAlign="center" variant="h6">{title}</Typography>
+                <Typography textAlign="center" variant="h6">{subtitle}</Typography>
             </Box>
         </>
     )
