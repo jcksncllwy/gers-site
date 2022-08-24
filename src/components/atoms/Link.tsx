@@ -2,18 +2,24 @@ import { Link as RouterLink, LinkProps } from "react-router-dom";
 import styled from "styled-components";
 
 type Props = {
-    children: React.ReactNode;
+    children: React.ReactNode
+    underline?: boolean
 } & LinkProps;
 
-const Link = ({children, ...props}: Props)=>{
+const Link = ({children, underline, ...props}: Props)=>{
     return(
-        <StyledLink {...props}>{children}</StyledLink>
+        // @ts-ignore: styled component props
+        <StyledLink underline={underline} {...props}>{children}</StyledLink>
     )
 }
 
+
 const StyledLink = styled(RouterLink)`
     color: inherit;
-    text-decoration: none;
+    ${
+        // @ts-ignore: styled component props
+        p => p.underline?'':'text-decoration: none;'
+    }
     &:visited{
         color: inherit;
     }

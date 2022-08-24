@@ -32,12 +32,12 @@ export const WebGLGlobe = ({boxProps}: Props) => {
 
         // Auto-rotate
         globe.controls().autoRotate = true;
-        globe.controls().autoRotateSpeed = 0.35;
+        globe.controls().autoRotateSpeed = 0.55;
 
         // Add clouds sphere
         const CLOUDS_IMG_URL = 'https://ltfowyvtpuhuazsxpcvn.supabase.co/storage/v1/object/public/public-images/clouds.png'; 
         const CLOUDS_ALT = 0.004;
-        const CLOUDS_ROTATION_SPEED = -0.006; // deg/frame
+        const CLOUDS_ROTATION_SPEED = -0.009; // deg/frame
 
         new THREE.TextureLoader().load(CLOUDS_IMG_URL, (cloudsTexture: any) => {
             const clouds = new THREE.Mesh(

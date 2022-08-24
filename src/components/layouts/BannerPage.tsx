@@ -1,23 +1,25 @@
-import { Box, Container, ContainerProps } from "@mui/material";
+import { Box, BoxProps, Container, ContainerProps } from "@mui/material";
 import { AppBar } from '../molecules/AppBar';
 
 
 type Props = {
     children?: React.ReactNode;
     banner: React.ReactNode
-} & ContainerProps
+} & BoxProps
 
-const BannerPage = ({ children, banner, ...props }: Props) => (
-    <Box>
-        <AppBar />
-        <Box>
-            {banner}
+const BannerPage = ({ children, banner, ...props }: Props) => {
+    return (
+        <Box {...props}>
+            <AppBar />
+            <Box>
+                {banner}
+            </Box>
+            <Box>
+                {children}
+            </Box>
         </Box>
-        <Container {...props} sx={{ paddingTop: '40px' }}>
-            {children}
-        </Container>
-    </Box>
-)
+    )
+}
 
 
 export default BannerPage;

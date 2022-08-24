@@ -6,7 +6,7 @@ import {
 } from "react-router-dom";
 
 import Register from './pages/Register/Register';
-import Splash from './pages/Splash';
+import Splash from './pages/Splash/Splash';
 import Agenda from './pages/Agenda';
 import { ThankYou } from './pages/ThankYou/ThankYou';
 import { AppProvider } from './contexts/AppProvider';

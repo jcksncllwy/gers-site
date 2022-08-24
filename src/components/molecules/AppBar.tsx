@@ -32,6 +32,21 @@ interface Props {
 const drawerWidth = 240;
 const navItems = ['Agenda'];
 
+type NavLinkProps = { children: React.ReactNode, underline?: boolean }
+const NavLink = ({ children, underline }: NavLinkProps) => {
+  return (
+    <Typography
+      fontSize="1.25rem"
+      fontWeight="300"
+      sx={underline?{
+        backgroundSize: '1px 1em',
+        boxShadow: "inset 0 -0.125em white, inset 0 -0.2em #000"
+      }:null}>
+      {children}
+    </Typography>
+  )
+}
+
 const DrawerAppBar = (props: Props) => {
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
@@ -64,7 +79,7 @@ const DrawerAppBar = (props: Props) => {
   const container = window !== undefined ? () => window().document.body : undefined;
 
   return (
-    <Box sx={{ display: 'flex' }}>
+    <Box sx={{ display: 'flex', backgroundColor: "rgb(0, 30, 60)" }}>
       <AppBar component="nav" sx={{
         backgroundColor: 'transparent',
         "&:before": {
@@ -76,52 +91,59 @@ const DrawerAppBar = (props: Props) => {
           right: 0,
           bottom: 0,
           left: 0,
-          opacity: 0.75
+          opacity: 0.85,
+          transitionProperty: "opacity",
+          transitionDuration: "0.5s"
+        },
+        "&:hover:before": {
+          opacity: 1
         }
       }}>
-        <Container sx={{p:{xs:0, sm:0}}}>
-        <Toolbar>
-          <IconButton
-            color="inherit"
-            aria-label="open drawer"
-            edge="start"
-            onClick={handleDrawerToggle}
-            sx={{ mr: 2, display: { sm: 'none' } }}
-          >
-            <MenuIcon />
-          </IconButton>
-          <Typography
-            variant="h6"
-            component="div"
-            sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' } }}
-          >
-            <Link to="/">Global Earth Repair Summit</Link>
-          </Typography>
-          <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
-            {navItems.map((item) => (
-              <Button key={item} sx={{ color: '#fff' }}>
-                {item}
-              </Button>
-            ))}
-            {profile ?
-              <LoadingButton
-                variant="outlined"
-                loading={loggingOut}
-                onClick={async () => {
-                  setLoggingOut(true);
-                  const { error } = await supabase.auth.signOut()
-                  console.log(error);
-                  navigate("/")
-                }}>
-                Logout
-              </LoadingButton>
-              :
-              <Button variant="contained" size="large" >
-                <Link to="/register">Register Now</Link>
-              </Button>
-            }
-          </Box>
-        </Toolbar>
+        <Container sx={{ p: { xs: 0, sm: 0 } }}>
+          <Toolbar>
+            <IconButton
+              color="inherit"
+              aria-label="open drawer"
+              edge="start"
+              onClick={handleDrawerToggle}
+              sx={{ mr: 2, display: { sm: 'none' } }}
+            >
+              <MenuIcon />
+            </IconButton>
+            <Typography
+              variant="h6"
+              component="div"
+              sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' } }}
+            >
+              <Link to="/">Global Earth Repair Summit</Link>
+            </Typography>
+            <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
+              {navItems.map((item) => (
+                <Button key={item} sx={{ color: '#fff' }}>
+                  <NavLink>{item}</NavLink>
+                </Button>
+              ))}
+              {profile ?
+                <LoadingButton
+                  variant="outlined"
+                  loading={loggingOut}
+                  onClick={async () => {
+                    setLoggingOut(true);
+                    const { error } = await supabase.auth.signOut()
+                    console.log(error);
+                    navigate("/")
+                  }}>
+                  Logout
+                </LoadingButton>
+                :
+                <Button sx={{ color: '#fff' }}>
+                  <NavLink underline>
+                    <Link to="/register">Register Now</Link>
+                  </NavLink>
+                </Button>
+              }
+            </Box>
+          </Toolbar>
         </Container>
       </AppBar>
       <Box component="nav">
