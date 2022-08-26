@@ -2,14 +2,12 @@ import { useContext, useEffect, useState } from 'react'
 import { supabase, updateProfile } from '../../APIClients/supabaseClient'
 
 import BasicPage from '../../components/layouts/BasicPage'
-import { Box, Card, CardContent, Step, StepLabel, Stepper, Typography } from '@mui/material';
 import ContactForm, { Fields } from './ContactForm';
 import { cvent, admissionItems } from '../../APIClients/cventClient';
 import { PayPalStep } from './PayPalStep';
 import { ProfileContext, ContextType as ProfileContextType } from '../../contexts/ProfileContext';
 import { Confirmation } from './Confirmation';
-
-const steps = ['Contact info', 'Payment details', 'Confirmation'];
+import { MultiStepForm } from '../../components/organisms/MultiStepForm';
 
 export type CventContactInfo = {
   firstName: string,
@@ -20,7 +18,7 @@ export type CventContactInfo = {
   id: string
 }
 
-export default function Register() {
+export default function RegisterAttendee() {
   const [activeStep, setActiveStep] = useState(0);
   const [cventToken, setCventToken] = useState('');
   const [profile, setProfile] = useContext(ProfileContext) as ProfileContextType;
@@ -72,58 +70,22 @@ export default function Register() {
     setActiveStep(activeStep + 1);
   }
 
-  const getStepContent = (step: number) => {
-    switch (step) {
-      case 0:
-        return (
-          <ContactForm onSubmit={async (fields) => {
-            await handleSignUp(fields);
-            nextStep();
-          }} />
-        );
-      case 1:
-        return <PayPalStep onSubmit={() => {
-          nextStep();
-        }} />;
-      case 2:
-        return <Confirmation />
-      default:
-        throw new Error('Unknown step');
-    }
-  }
-
   return (
     <BasicPage maxWidth='sm'>
-      <Box sx={{
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center'
-      }}>
-        <Card variant='elevation' sx={{ width: '100%' }}>
-          <CardContent sx={{
-            p: 4,
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center'
-          }}>
+      <MultiStepForm
+        stepNames={['Contact info', 'Payment details', 'Confirmation']}
+        activeStep={0}
+      >
+        <ContactForm onSubmit={async (fields) => {
+          await handleSignUp(fields);
+          nextStep();
+        }} />
+        <PayPalStep onSubmit={() => {
+          nextStep();
+        }} />
+        <Confirmation />
 
-            <Typography component="h1" variant="h4" align="center">
-              Register
-            </Typography>
-
-            <Stepper activeStep={activeStep} sx={{ pt: 3, pb: 5, width: '100%' }}>
-              {steps.map((label) => (
-                <Step key={label}>
-                  <StepLabel>{label}</StepLabel>
-                </Step>
-              ))}
-            </Stepper>
-
-            {getStepContent(activeStep)}
-
-          </CardContent>
-        </Card>
-      </Box>
+      </MultiStepForm>
     </BasicPage>
 
   )

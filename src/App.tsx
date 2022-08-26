@@ -5,7 +5,7 @@ import {
   Route,
 } from "react-router-dom";
 
-import Register from './pages/Register/Register';
+import RegisterAttendee from './pages/RegisterAttendee/RegisterAttendee';
 import Splash from './pages/Splash/Splash';
 import Agenda from './pages/Agenda';
 import { ThankYou } from './pages/ThankYou/ThankYou';
@@ -21,7 +21,7 @@ export default function App() {
             <Route index element={<Splash />} />
             <Route
               path="register"
-              element={<Register />}
+              element={<RegisterAttendee />}
             />
             <Route
               path="thank-you"

@@ -1,7 +1,7 @@
 import { Box, List, ListItem, ListItemText, Typography } from "@mui/material";
 import { useState } from "react";
 import { default as Grid } from "@mui/material/Unstable_Grid2";
-import { CventContactInfo } from "./Register";
+import { CventContactInfo } from "./RegisterAttendee";
 import { LoadingButton } from "@mui/lab";
 
 export type Props = {
