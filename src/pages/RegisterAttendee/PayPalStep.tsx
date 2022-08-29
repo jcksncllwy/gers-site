@@ -30,7 +30,7 @@ export const PayPalStep = ({ onSubmit }: Props) => {
             </Typography>
             <Grid container spacing={2}>
                 <Grid xs={12} sx={{ pb: 2 }}>
-                    <Typography>We are able to keep this event free thanks to your generous contribution</Typography>
+                    <Typography>Please contribute what you can, No one is turned away for lack of funds.</Typography>
                 </Grid>
                 <Grid xs={12} sx={{ pb: 2 }}>
                     <Button

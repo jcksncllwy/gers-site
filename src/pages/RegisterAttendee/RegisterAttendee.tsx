@@ -19,7 +19,7 @@ export type CventContactInfo = {
 }
 
 export default function RegisterAttendee() {
-  const [activeStep, setActiveStep] = useState(0);
+  const [activeStep, setActiveStep] = useState(2);
   const [cventToken, setCventToken] = useState('');
   const [profile, setProfile] = useContext(ProfileContext) as ProfileContextType;
 
@@ -75,7 +75,7 @@ export default function RegisterAttendee() {
       <MultiStepForm
         title="Registration"
         stepNames={['Contact info', 'Payment details', 'Confirmation']}
-        activeStep={0}
+        activeStep={activeStep}
       >
         <ContactForm onSubmit={async (fields) => {
           await handleSignUp(fields);
