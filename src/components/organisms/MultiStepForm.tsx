@@ -2,12 +2,14 @@ import { Box, Card, CardContent, Step as StepperStep, StepLabel as StepperStepLa
 import React, { ReactFragment } from "react";
 
 export type Props = {
+    title?: React.ReactNode,
+    subtitle?: React.ReactNode,
     activeStep: number,
     stepNames: string[],
     children: React.ReactNode
 }
 
-export const MultiStepForm = ({ activeStep, stepNames, children }: Props) => {
+export const MultiStepForm = ({ title, subtitle, activeStep, stepNames, children }: Props) => {
     const stepNodes = React.Children.toArray(children);
 
     return (
@@ -25,7 +27,10 @@ export const MultiStepForm = ({ activeStep, stepNames, children }: Props) => {
                 }}>
 
                     <Typography component="h1" variant="h4" align="center">
-                        Speaker Registration
+                        {title}
+                    </Typography>
+                    <Typography component="h1" variant="subtitle1" align="center">
+                        {subtitle}
                     </Typography>
 
                     <Stepper activeStep={activeStep} sx={{ pt: 3, pb: 5, width: '100%' }}>

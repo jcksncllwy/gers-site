@@ -10,6 +10,7 @@ import Splash from './pages/Splash/Splash';
 import Agenda from './pages/Agenda';
 import { ThankYou } from './pages/ThankYou/ThankYou';
 import { AppProvider } from './contexts/AppProvider';
+import { RegistrationType } from './pages/RegistrationType/RegistrationType';
 
 export default function App() {
 
@@ -19,6 +20,10 @@ export default function App() {
         <Routes>
           <Route path="/">
             <Route index element={<Splash />} />
+            <Route
+              path="register-type"
+              element={<RegistrationType />}
+            />
             <Route
               path="register"
               element={<RegisterAttendee />}
