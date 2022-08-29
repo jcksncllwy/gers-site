@@ -2,11 +2,18 @@ import { LoadingButton } from "@mui/lab";
 import { Box, Button, Card, CardContent, Paper, styled, Typography } from "@mui/material"
 import { default as Grid } from "@mui/material/Unstable_Grid2";
 import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import BasicPage from "../../components/layouts/BasicPage";
 
-type RegistrationType = 'attendee' | 'speaker' | 'sponsor'
-type TypeSelection = {
-    [key in RegistrationType]: boolean
+const types = ['attendee', 'speaker', 'sponsor'] as const
+type RegistrationType = typeof types[number]
+type RouteMap = {
+    [key in RegistrationType]: string
+}
+const typeRoutes: RouteMap = {
+    'attendee': '/register',
+    'speaker': 'https://docs.google.com/forms/d/e/1FAIpQLSeGQqmQbRYmac8hKC7ri_GS3QIxos4RYJC9_eBEgA8a4dBRQg/viewform?usp=sf_link',
+    'sponsor': 'https://docs.google.com/forms/d/e/1FAIpQLSdFSPSdPtwotUxoaUWbaly_JIszXCWP9wbKGfoCEVD5Ghy2-Q/viewform?usp=sf_link'
 }
 
 const Item = styled(Paper)(({ theme }) => ({
@@ -24,25 +31,11 @@ const Item = styled(Paper)(({ theme }) => ({
         border: `1px solid ${theme.palette.primary.main}`,
         top: '2px'
     },
-  }));
+}));
 
 export const RegistrationType = () => {
-    const [loading, setLoading] = useState(false)
-    const [types, setTypes] = useState<TypeSelection>({
-        attendee: false,
-        speaker: false,
-        sponsor: false,
-    })
-
-    const toggleType = (type: RegistrationType) => {
-        const deselectedTypes: TypeSelection = Object.keys(types).reduce((prev, curr) => {
-            return { ...prev, [curr]: false }
-        }, types)
-        setTypes({
-            ...deselectedTypes,
-            [type]: !types[type]
-        })
-    }
+    const [selectedType, setSelectedType] = useState<RegistrationType | null>(null)
+    const navigate = useNavigate();
 
     return (
         <BasicPage maxWidth='sm'>
@@ -61,35 +54,29 @@ export const RegistrationType = () => {
                         <Typography variant="h6" gutterBottom sx={{ pb: 2 }}>
                             How will you be registering?
                         </Typography>
-                        <Grid container spacing={2}>
-                            {Object.entries(types).map(([name, selected]) => {
+                        <Grid container spacing={2} sx={{width: '100%'}}>
+                            {types.map((type) => {
+                                const selected = type === selectedType
                                 return (
                                     <Grid xs={12} sm={4}>
                                         <Item
-                                            elevation={selected?3:9}
+                                            elevation={selected ? 3 : 9}
                                             square
                                             sx={{
-                                                backgroundColor: selected?'primary.dark':'background.paper',
-                                                top: selected?'2px':'0px'
+                                                backgroundColor: selected ? 'primary.dark' : 'background.paper',
+                                                top: selected ? '2px' : '0px',
+                                               
                                             }}
                                             onClick={() => {
-                                                toggleType(name as RegistrationType)
+                                                setSelectedType(type)
+                                                window.location.href = typeRoutes[type]
                                             }}
                                         >
-                                            {name.toLocaleUpperCase()}
+                                            {type.toLocaleUpperCase()}
                                         </Item>
                                     </Grid>
                                 )
                             })}
-                            <Grid xs={12} sx={{ mt: 2, textAlign: 'right' }}>
-                                <LoadingButton
-                                    type="submit"
-                                    variant="contained"
-                                    loading={loading}
-                                >
-                                    Next
-                                </LoadingButton>
-                            </Grid>
                         </Grid>
                     </CardContent>
                 </Card>
