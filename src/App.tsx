@@ -12,6 +12,7 @@ import { ThankYou } from './pages/ThankYou/ThankYou';
 import { AppProvider } from './contexts/AppProvider';
 import { RegistrationType } from './pages/RegistrationType/RegistrationType';
 import { Speakers } from './pages/Speakers/Speakers';
+import { Collaborators } from './pages/Collaborators/Collaborators';
 
 export default function App() {
 
@@ -32,6 +33,10 @@ export default function App() {
             <Route
               path="speakers"
               element={<Speakers />}
+            />
+            <Route
+              path="collaborators"
+              element={<Collaborators />}
             />
             <Route
               path="thank-you"

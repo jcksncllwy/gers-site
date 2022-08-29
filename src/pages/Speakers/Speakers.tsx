@@ -9,7 +9,7 @@ export type SpeakerType = {
     subtitle: string,
 }
 
-export const speakers: SpeakerType[] = [
+export const speakerList: SpeakerType[] = [
     {
         imageURL: "https://regenerationinternational.org/wp-content/uploads/2016/03/JDLHeadshot_HighRes.jpg",
         name: "John D. Liu",
@@ -73,7 +73,7 @@ export const Speakers = () => {
             >
                 Speakers
             </Typography>
-            <SpeakerGrid speakers={speakers} />
+            <SpeakerGrid speakers={speakerList} />
         </BasicPage>
     )
 }

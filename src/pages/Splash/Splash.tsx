@@ -6,7 +6,7 @@ import BannerPage from "../../components/layouts/BannerPage";
 import { WebGLGlobe } from "../../components/molecules/WebGLGlobe";
 import Ticker from "react-ticker";
 import { SpeakerGrid } from "../../components/molecules/SpeakerGrid";
-import { speakers } from "../Speakers/Speakers";
+import { speakerList } from "../Speakers/Speakers";
 
 type BannerTextProps = { children: React.ReactNode }
 const BannerText = ({ children }: BannerTextProps) => {
@@ -137,7 +137,7 @@ const Splash = () => {
                     >
                         Speakers
                     </Typography>
-                    <SpeakerGrid speakers={speakers} />
+                    <SpeakerGrid speakers={speakerList} />
                     <Typography variant="h3" fontWeight="300" textAlign="center" sx={{pt: 2}}>
                         <Link underline to="/speakers">And many more</Link>
                     </Typography>
