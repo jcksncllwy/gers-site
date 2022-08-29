@@ -11,6 +11,7 @@ import Agenda from './pages/Agenda';
 import { ThankYou } from './pages/ThankYou/ThankYou';
 import { AppProvider } from './contexts/AppProvider';
 import { RegistrationType } from './pages/RegistrationType/RegistrationType';
+import { Speakers } from './pages/Speakers/Speakers';
 
 export default function App() {
 
@@ -27,6 +28,10 @@ export default function App() {
             <Route
               path="register"
               element={<RegisterAttendee />}
+            />
+            <Route
+              path="speakers"
+              element={<Speakers />}
             />
             <Route
               path="thank-you"

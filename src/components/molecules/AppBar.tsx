@@ -30,7 +30,10 @@ interface Props {
 }
 
 const drawerWidth = 240;
-const navItems: string[] = [];
+const navItems = {
+  'speakers': '/speakers',
+  'collaborators': '/collaborators'
+}
 
 type NavLinkProps = { children: React.ReactNode, underline?: boolean }
 const NavLink = ({ children, underline }: NavLinkProps) => {
@@ -38,10 +41,10 @@ const NavLink = ({ children, underline }: NavLinkProps) => {
     <Typography
       fontSize="1.25rem"
       fontWeight="300"
-      sx={underline?{
+      sx={underline ? {
         backgroundSize: '1px 1em',
         boxShadow: "inset 0 -0.125em white, inset 0 -0.2em #000"
-      }:null}>
+      } : null}>
       {children}
     </Typography>
   )
@@ -65,10 +68,10 @@ const DrawerAppBar = (props: Props) => {
       </Typography>
       <Divider />
       <List>
-        {navItems.map((item) => (
-          <ListItem key={item} disablePadding>
+        {Object.entries(navItems).map(([name, to]) => (
+          <ListItem key={name} disablePadding>
             <ListItemButton sx={{ textAlign: 'center' }}>
-              <ListItemText primary={item} />
+              <ListItemText primary={name} />
             </ListItemButton>
           </ListItem>
         ))}
@@ -118,9 +121,11 @@ const DrawerAppBar = (props: Props) => {
               <Link to="/">Global Earth Repair Summit</Link>
             </Typography>
             <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
-              {navItems.map((item) => (
-                <Button key={item} sx={{ color: '#fff' }}>
-                  <NavLink>{item}</NavLink>
+              {Object.entries(navItems).map(([name, to]) => (
+                <Button key={name} sx={{ color: '#fff' }}>
+                  <NavLink>
+                    <Link to={to}>{name}</Link>
+                  </NavLink>
                 </Button>
               ))}
               {profile ?
@@ -138,7 +143,7 @@ const DrawerAppBar = (props: Props) => {
                 :
                 <Button sx={{ color: '#fff' }}>
                   <NavLink underline>
-                    <Link to="/register">Register Now</Link>
+                    <Link to="/register-type">Register Now</Link>
                   </NavLink>
                 </Button>
               }
