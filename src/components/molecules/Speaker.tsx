@@ -34,12 +34,13 @@ export const Speaker = ({ imageURL, name, title, subtitle }: Props) => {
                     backgroundPosition: "center",
                     backgroundSize: "cover",
                     transform: `rotate(${rotation}deg)`,
-                    zIndex: '2'
+                    zIndex: '2',
+                    opacity: 0
                 }}>
                 </Box>
             </Box>
             <Box sx={{ position: "relative", zIndex: '3' }}>
-                <Typography textAlign="center" sx={{ pt: 6 }} fontSize="1.5rem" fontWeight={700}>{name}</Typography>
+                <Typography textAlign="center" sx={{ pt: 2 }} fontSize="1.5rem" fontWeight={700}>{name}</Typography>
                 <Typography textAlign="center" variant="h6">{title}</Typography>
                 <Typography textAlign="center" variant="h6">{subtitle}</Typography>
             </Box>

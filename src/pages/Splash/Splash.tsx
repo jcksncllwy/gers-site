@@ -42,11 +42,20 @@ const Banner = () => {
                                 <BannerText>Rewild</BannerText>
                                 <BannerText>Renew</BannerText>
                                 <Typography variant="h5" fontWeight="300" sx={{ mt: 2 }}>Oct 21 - 24, Online</Typography>
-                                <Button variant="contained" size="large" sx={{ px: 3, py: 2, mt: 2 }} >
-                                    <Typography fontSize="1.25rem">
-                                        <Link to="/register-type">Register Now</Link>
-                                    </Typography>
-                                </Button>
+                                <Box>
+                                    <Button variant="contained" size="large" sx={{ px: 3, py: 2, mt: 2 }} >
+                                        <Typography fontSize="1.25rem">
+                                            <Link to="/register-type">Register Now</Link>
+                                        </Typography>
+                                    </Button>
+                                </Box>
+                                <Box>
+                                    <Button variant="contained" size="large" sx={{ px: 3, py: 2, mt: 2 }} >
+                                        <Typography fontSize="1.25rem">
+                                            <Link to="/register-type">Volunteer</Link>
+                                        </Typography>
+                                    </Button>
+                                </Box>
                             </Grid2>
                         </Grid2>
                     </Container>
@@ -82,10 +91,12 @@ const Splash = () => {
             backgroundColor: "#fff",
         }}>
             <Box sx={{ color: "#3187DE" }}>
-                <Box display="flex" alignItems="center">
-                    <img src="https://www.smwllc.com/wp-content/uploads/2020/04/Zoom-Video-Call-on-Computer-Screen-Cartoon-825x550.jpg" />
-
-                    <Container maxWidth="sm" sx={{ py: 2 }}>
+                <Grid2 container spacing={2}>
+                    <Grid2 xs={12} sm={6} sx={{
+                        backgroundImage: 'url("https://ltfowyvtpuhuazsxpcvn.supabase.co/storage/v1/object/public/public-images/newforestfarm.jpeg")'
+                    }}>
+                    </Grid2>
+                    <Grid2 xs={12} sm={6} sx={{ pr: 10, pl: 6, py: 4 }}>
                         <Typography variant="h6" sx={{ mb: 4 }}>About the Event</Typography>
                         <Typography fontSize="1.75rem" lineHeight="1.75rem" fontWeight="400" sx={{ mb: 3 }}>
                             BRINGING TOGETHER & SERVING THE GLOBAL GRASSROOTS ECO-RESTORATION MOVEMENT
@@ -93,17 +104,17 @@ const Splash = () => {
                         <Typography sx={{ color: "#000", mb: 2 }} variant="h6" fontWeight="700" >
                             We want to restore ecosystems. And you're invited to join us.
                         </Typography>
-                        <Typography sx={{ color: "#000" }}>
-                            <em>October 21-22</em> will be dedicated to keynote speakers, workshops and small group sessions. All presentations and workshops will take place on Zoom.
+                        <Typography sx={{ color: "#000", mb: 2 }}>
+                            <Typography display="inline" sx={{ fontWeight: 700 }}>October 21-22</Typography> will be dedicated to keynote speakers, workshops and small group sessions. All presentations and workshops will take place on Zoom.
                         </Typography>
-                        <Typography sx={{ color: "#000" }}>
-                            October 23, in-person actions will be taking place around the globe. We will be broadcasting livestreams of these in-person events for you to watch along. Or, you can start your own!
+                        <Typography sx={{ color: "#000", mb: 2 }}>
+                            <Typography display="inline" sx={{ fontWeight: 700 }}>October 23</Typography> in-person actions will be taking place around the globe. We will be broadcasting livestreams of these in-person events for you to watch along. Or, you can start your own!
                         </Typography>
-                        <Typography sx={{ color: "#000" }}>
-                            October 24 is dedicated to crafting an International Plan of Action to present to the world.
+                        <Typography sx={{ color: "#000", mb: 2 }}>
+                            <Typography display="inline" sx={{ fontWeight: 700 }}>October 24</Typography> is dedicated to crafting an International Plan of Action to present to the world.
                         </Typography>
-                    </Container>
-                </Box>
+                    </Grid2>
+                </Grid2>
             </Box>
             <Box sx={{
                 backgroundColor: "rgb(0,30,60)",
@@ -138,7 +149,7 @@ const Splash = () => {
                         Speakers
                     </Typography>
                     <SpeakerGrid speakers={speakerList} />
-                    <Typography variant="h3" fontWeight="300" textAlign="center" sx={{pt: 2}}>
+                    <Typography variant="h3" fontWeight="300" textAlign="center" sx={{ pt: 2 }}>
                         <Link underline to="/speakers">And many more</Link>
                     </Typography>
                 </Container>

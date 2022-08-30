@@ -19,7 +19,7 @@ export type CventContactInfo = {
 }
 
 export default function RegisterAttendee() {
-  const [activeStep, setActiveStep] = useState(2);
+  const [activeStep, setActiveStep] = useState(0);
   const [cventToken, setCventToken] = useState('');
   const [profile, setProfile] = useContext(ProfileContext) as ProfileContextType;
 
