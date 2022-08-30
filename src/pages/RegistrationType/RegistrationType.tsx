@@ -20,8 +20,9 @@ const Item = styled(Paper)(({ theme }) => ({
     ...theme.typography.body2,
     textAlign: 'center',
     color: theme.palette.text.secondary,
-    height: 60,
+    fontSize: "1.75rem",
     lineHeight: '60px',
+    padding: '10px 20px',
     border: `1px solid transparent`,
     position: 'relative',
     top: 0,
@@ -58,7 +59,7 @@ export const RegistrationType = () => {
                             {types.map((type) => {
                                 const selected = type === selectedType
                                 return (
-                                    <Grid xs={12} sm={4}>
+                                    <Grid xs={12} sm={6}>
                                         <Item
                                             elevation={selected ? 3 : 9}
                                             square
