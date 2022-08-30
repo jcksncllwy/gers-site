@@ -2,8 +2,7 @@ import { LoadingButton } from "@mui/lab";
 import { Box, Typography, FormControl, RadioGroup, FormControlLabel, Radio, TextField, InputAdornment, Button } from "@mui/material";
 import { default as Grid } from "@mui/material/Unstable_Grid2";
 import { useState } from "react";
-
-const payPalDonationLink = "https://www.paypal.com/donate/?hosted_button_id=3JYNMMVYD9KC6"
+import { payPalDonationLink } from "../../constants";
 
 export type Props = {
     onSubmit: () => any

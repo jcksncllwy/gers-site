@@ -1,5 +1,6 @@
 import { Box, Container, ContainerProps } from "@mui/material";
 import { AppBar } from '../molecules/AppBar';
+import Footer from "../molecules/Footer";
 
 
 type Props = {
@@ -12,6 +13,7 @@ const BasicPage = ({ children, ...props }: Props) => (
         <Container {...props} sx={{ paddingTop: '40px' }}>
             {children}
         </Container>
+        <Footer />
     </Box>
 )
 
