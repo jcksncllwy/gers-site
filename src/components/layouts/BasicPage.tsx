@@ -8,7 +8,7 @@ type Props = {
 } & ContainerProps
 
 const BasicPage = ({ children, ...props }: Props) => (
-    <Box>
+    <Box sx={{height: "100vh", display: 'flex', flexDirection: 'column'}}>
         <AppBar />
         <Container {...props} sx={{ paddingTop: '40px' }}>
             {children}

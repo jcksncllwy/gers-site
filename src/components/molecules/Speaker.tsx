@@ -26,18 +26,6 @@ export const Speaker = ({ imageURL, name, title, subtitle }: Props) => {
                     zIndex: '1'
                 }}>
                 </Box>
-                <Box sx={{
-                    position: "absolute",
-                    top: "-25%", left: "-25%",
-                    width: "150%", height: "150%",
-                    backgroundImage: "url(https://cdn.pixabay.com/photo/2021/08/19/03/44/leaves-6556959_1280.png)",
-                    backgroundPosition: "center",
-                    backgroundSize: "cover",
-                    transform: `rotate(${rotation}deg)`,
-                    zIndex: '2',
-                    opacity: 0
-                }}>
-                </Box>
             </Box>
             <Box sx={{ position: "relative", zIndex: '3' }}>
                 <Typography textAlign="center" sx={{ pt: 2 }} fontSize="1.5rem" fontWeight={700}>{name}</Typography>
