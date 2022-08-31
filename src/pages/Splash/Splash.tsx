@@ -107,20 +107,20 @@ const About = () => {
                 </Grid2>
                 <Grid2 xs={12} sm={6} sx={{ pr: 10, pl: 6, py: 6 }}>
                     <Typography variant="h6" sx={{ mb: 4 }}>About the Event</Typography>
-                    <Typography fontSize="1.75rem" lineHeight="1.75rem" fontWeight="400" sx={{ mb: 3 }}>
-                        BRINGING TOGETHER & SERVING THE GLOBAL GRASSROOTS ECO-RESTORATION MOVEMENT
+                    <Typography fontSize="1.75rem" lineHeight="1.75rem" fontWeight="400" fontFamily="Harabara Mais Demo" sx={{ mb: 3 }}>
+                        Bringing together & serving the global grassroots eco-restoration movement
                     </Typography>
-                    <Typography sx={{ color: "#000", mb: 2 }} variant="h6" fontWeight="700" >
-                        We want to restore ecosystems. And you're invited to join us.
-                    </Typography>
-                    <Typography sx={{ color: "#000", mb: 2 }}>
-                        <Typography display="inline" sx={{ fontWeight: 700 }}>October 21-22</Typography> will be dedicated to keynote speakers, workshops and small group sessions. All presentations and workshops will take place on Zoom.
+                    <Typography sx={{ color: "#000", mb: 2 }} variant="h6" fontFamily="Harabara Mais Demo" >
+                        We invite you to join us for this 4-day hybrid event featuring online sessions and in-person actions
                     </Typography>
                     <Typography sx={{ color: "#000", mb: 2 }}>
-                        <Typography display="inline" sx={{ fontWeight: 700 }}>October 23</Typography> in-person actions will be taking place around the globe. We will be broadcasting livestreams of these in-person events for you to watch along. Or, you can start your own!
+                        <Typography display="inline" sx={{ fontWeight: 700 }}>October 21-22</Typography> Keynote speakers, workshops and small group sessions. All presentations and workshops will take place online.
                     </Typography>
                     <Typography sx={{ color: "#000", mb: 2 }}>
-                        <Typography display="inline" sx={{ fontWeight: 700 }}>October 24</Typography> is dedicated to crafting an International Plan of Action to present to the world.
+                        <Typography display="inline" sx={{ fontWeight: 700 }}>October 23</Typography> An in-person Day of Action will be taking place around the globe. We will broadcast live streams of these in-person events for you to follow along. Better yet, we encourage you to start your own!
+                    </Typography>
+                    <Typography sx={{ color: "#000", mb: 2 }}>
+                        <Typography display="inline" sx={{ fontWeight: 700 }}>October 24</Typography> Coalescing and crafting an International Plan of Action to present to the world
                     </Typography>
                 </Grid2>
             </Grid2>
@@ -133,8 +133,8 @@ type FeatureProps = { children: React.ReactNode }
 const FeatureItem = ({ children }: FeatureProps) => {
     return (
         <Typography
-            variant="h5"
-            fontWeight="300"
+            fontSize={32}
+            fontFamily="Harabara Mais Demo"
             sx={{ mb: 2 }}
         >
             {children}
@@ -189,7 +189,7 @@ const Splash = () => {
                         sx={{ pb: 4 }}
                         textAlign="center"
                         fontSize={120}
-                        fontFamily='Six Caps, Roboto Condensed, "sans-serif"'
+                        fontFamily='Blackriver Bold, Roboto Condensed, "sans-serif"'
                     >
                         Speakers
                     </Typography>
