@@ -70,7 +70,8 @@ export const cvent = {
                 status: "Accepted",
                 event: { id: summitEventID },
                 contact: { id: contactID },
-                admissionItem: { id: admissionItemID }
+                admissionItem: { id: admissionItemID },
+                sendEmail: true
             }])
         });
         const payload = await response.json()

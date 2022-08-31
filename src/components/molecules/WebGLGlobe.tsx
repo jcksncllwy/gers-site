@@ -33,6 +33,9 @@ export const WebGLGlobe = ({boxProps}: Props) => {
         globe.controls().autoRotate = true;
         globe.controls().autoRotateSpeed = 0.55;
 
+        // Zoom
+        globe.camera().zoom = 2;
+
         // Add clouds sphere
         const CLOUDS_IMG_URL = 'https://ltfowyvtpuhuazsxpcvn.supabase.co/storage/v1/object/public/public-images/clouds.png'; 
         const CLOUDS_ALT = 0.004;
@@ -62,6 +65,7 @@ export const WebGLGlobe = ({boxProps}: Props) => {
                 backgroundColor="rgba(0,0,0,0)"
                 globeImageUrl="//unpkg.com/three-globe/example/img/earth-blue-marble.jpg"
                 bumpImageUrl="//unpkg.com/three-globe/example/img/earth-topology.png"
+                
             />
         </Box>
     )

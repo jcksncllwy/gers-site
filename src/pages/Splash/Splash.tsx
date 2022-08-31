@@ -12,10 +12,14 @@ type BannerTextProps = { children: React.ReactNode }
 const BannerText = ({ children }: BannerTextProps) => {
     return (
         <Typography
-            fontFamily='Six Caps, Roboto Condensed, "sans-serif"'
-            fontSize={120}
-            lineHeight={1}
+            fontFamily='Blackriver Bold, Roboto Condensed, "sans-serif"'
+            fontSize={80}
+            lineHeight={1.25}
             color='rgb(210,168,61)'
+            sx={{
+                " -webkit-text-stroke-width": "1px",
+                "-webkit-text-stroke-color": "black"
+            }}
         >{children}</Typography>
     )
 }
@@ -29,35 +33,40 @@ const Banner = () => {
                     display='flex'
                     alignItems='center'
                     sx={{ position: 'absolute', top: 0, height: '100%', width: '100%', }}>
-                    <Container>
-                        <Grid2 container spacing={2} sx={{ px: 15 }}>
-                            <Grid2 xs={12} sm={6}>
-                                <BannerText>Global</BannerText>
-                                <BannerText>Earth</BannerText>
-                                <BannerText>Repair</BannerText>
-                                <BannerText>Summit</BannerText>
-                            </Grid2>
-                            <Grid2 xs={12} sm={6} textAlign="right">
-                                <BannerText>Restore</BannerText>
-                                <BannerText>Rewild</BannerText>
-                                <BannerText>Renew</BannerText>
-                                <Typography variant="h5" fontWeight="300" sx={{ mt: 2 }}>Oct 21 - 24, Online</Typography>
-                                <Box>
-                                    <Button variant="contained" size="large" sx={{ px: 3, py: 2, mt: 2 }} >
-                                        <Typography fontSize="1.25rem">
-                                            <Link to="/register-type">Register Now</Link>
-                                        </Typography>
-                                    </Button>
-                                </Box>
-                                <Box>
-                                    <Button variant="contained" size="large" sx={{ px: 3, py: 2, mt: 2 }} >
-                                        <Typography fontSize="1.25rem">
-                                            <Link to="/register-type">Volunteer</Link>
-                                        </Typography>
-                                    </Button>
-                                </Box>
-                            </Grid2>
-                        </Grid2>
+                    <Container sx={{
+                        display: "flex",
+                        flexDirection: "column",
+                        alignItems: "center"
+                    }}>
+                        <Box maxWidth="md">
+                            <img src="https://ltfowyvtpuhuazsxpcvn.supabase.co/storage/v1/object/public/public-images/GERS%20Title%20and%20Date.png" />
+                        </Box>
+                        <Typography
+                            fontFamily='Blackriver Bold, Roboto Condensed, "sans-serif"'
+                            fontSize={40}
+                            lineHeight={1.25}
+                            color='#fff'
+                            sx={{
+                                mt: -4,
+                                " -webkit-text-stroke-width": "1px",
+                                "-webkit-text-stroke-color": "black"
+                            }}
+                        >
+                            Will you heed Earth's call?
+                        </Typography>
+                        <Box>
+                            <Button variant="contained" size="large" sx={{ px: 3, py: 2, mt: 2, mr: 4 }} >
+                                <Typography fontSize="1.25rem">
+                                    <Link to="/register-type">Register Now</Link>
+                                </Typography>
+                            </Button>
+
+                            <Button variant="contained" size="large" sx={{ px: 3, py: 2, mt: 2 }} >
+                                <Typography fontSize="1.25rem">
+                                    <Link to="/register-type">Volunteer</Link>
+                                </Typography>
+                            </Button>
+                        </Box>
                     </Container>
                 </Box>
             </Box>
@@ -92,6 +101,7 @@ const About = () => {
                 <Grid2 xs={12} sm={6} sx={{
                     backgroundImage: 'url("https://ltfowyvtpuhuazsxpcvn.supabase.co/storage/v1/object/public/public-images/newforestfarm.jpeg")',
                     backgroundPosition: "center",
+                    backgroundSize: "cover",
                     minHeight: "400px"
                 }}>
                 </Grid2>
@@ -142,7 +152,7 @@ const Features = () => {
         }}>
             <Paper sx={{ p: 4 }}>
                 <Grid2 container spacing={4}>
-                    <Grid2 xs={12} md={7} sx={{pr:4}}>
+                    <Grid2 xs={12} md={7} sx={{ pr: 4 }}>
                         <ul>
                             {
                                 features.map((feature) => {
@@ -184,8 +194,14 @@ const Splash = () => {
                         Speakers
                     </Typography>
                     <SpeakerGrid speakers={speakerList} />
-                    <Typography variant="h3" fontWeight="300" textAlign="center" sx={{ pt: 2 }}>
-                        <Link underline to="/speakers">And many more</Link>
+                    <Typography variant="h3" fontWeight="300" textAlign="center" sx={{ pt: 8 }}>
+                        <Link to="/speakers">
+                            <Button variant="contained" sx={{ p: 4 }}>
+                                <Typography variant="h5">
+                                    See All Speakers
+                                </Typography>
+                            </Button>
+                        </Link>
                     </Typography>
                 </Container>
             </Box>

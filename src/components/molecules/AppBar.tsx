@@ -12,14 +12,15 @@ import ListItemText from '@mui/material/ListItemText';
 import MenuIcon from '@mui/icons-material/Menu';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
-import Button from '@mui/material/Button';
+import Button, { ButtonProps } from '@mui/material/Button';
 import { LoadingButton } from "@mui/lab";
 import { useNavigate } from "react-router-dom"
 
 import Link from '../atoms/Link';
 import { ProfileContext, ContextType as ProfileContextType } from '../../contexts/ProfileContext';
 import { supabase } from '../../APIClients/supabaseClient';
-import { Container } from '@mui/material';
+import { Container, styled } from '@mui/material';
+import { ColorButton } from '../atoms/ColorButton';
 
 interface Props {
   /**
@@ -137,15 +138,11 @@ const DrawerAppBar = (props: Props) => {
                   Logout
                 </LoadingButton>
                 :
-                <Button variant="contained" sx={{ 
-                  color: '#fff', 
-                  backgroundColor: 'secondary.main',
-                  '&:hover': { backgroundColor: 'secondary.dark'}
-                  }}>
+                <ColorButton variant="contained">
                   <NavLink underline>
                     <Link to="/register-type">Register Now</Link>
                   </NavLink>
-                </Button>
+                </ColorButton>
               }
             </Box>
           </Toolbar>
