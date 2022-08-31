@@ -32,19 +32,15 @@ interface Props {
 const drawerWidth = 240;
 const navItems = {
   'speakers': '/speakers',
-  'collaborators': '/collaborators'
+  'collaborators': '/collaborators',
+  'sponsorship': '/sponsors'
 }
 
 type NavLinkProps = { children: React.ReactNode, underline?: boolean }
 const NavLink = ({ children, underline }: NavLinkProps) => {
   return (
     <Typography
-      fontSize="1.25rem"
-      fontWeight="300"
-      sx={underline ? {
-        backgroundSize: '1px 1em',
-        boxShadow: "inset 0 -0.125em white, inset 0 -0.2em #000"
-      } : null}>
+      fontSize="1.25rem">
       {children}
     </Typography>
   )
@@ -141,7 +137,11 @@ const DrawerAppBar = (props: Props) => {
                   Logout
                 </LoadingButton>
                 :
-                <Button sx={{ color: '#fff' }}>
+                <Button variant="contained" sx={{ 
+                  color: '#fff', 
+                  backgroundColor: 'secondary.main',
+                  '&:hover': { backgroundColor: 'secondary.dark'}
+                  }}>
                   <NavLink underline>
                     <Link to="/register-type">Register Now</Link>
                   </NavLink>
