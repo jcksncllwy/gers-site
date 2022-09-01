@@ -115,7 +115,7 @@ const goldColor = theme.palette.secondary.main
 
 export const Collaborators = () => {
     return (
-        <BasicPage>
+        <BasicPage sx={{mb:4}}>
             <Typography
                 sx={{
                     pb: 4,

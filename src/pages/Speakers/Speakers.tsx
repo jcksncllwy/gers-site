@@ -1,6 +1,8 @@
-import { Typography } from "@mui/material"
+import { Typography, Paper } from "@mui/material"
 import BasicPage from "../../components/layouts/BasicPage"
 import { SpeakerGrid } from "../../components/molecules/SpeakerGrid"
+import Grid2 from "@mui/material/Unstable_Grid2";
+import { theme } from "../../styling/theme"
 
 export type SpeakerType = {
     imageURL: string,
@@ -57,23 +59,101 @@ export const speakerList: SpeakerType[] = [
         name: "Precious Phiri",
         title: "Training Coordinator",
         subtitle: "Africa Centre for Holistic Management",
-    },
-
-
+    }
 ]
+
+const remainingSpeakers = [
+    "Glenn Albrecht, Australia",
+    "Owen Allen, Phoenix Functions, Australia",
+    "Jeannette  Armstrong, Okanagan Nation, British Columbia, Canada",
+    "An Okanagan worldview of society.",
+    "Koreen Brennan, Grow Permaculture, Florida ",
+    "Joe Brewer, Earth Regenerators, Center for Applied Cultural Evolution, Barichara, Colombia",
+    "Rob de Laet, Brazil, The Netherlands,",
+    "Cedar Drake, Fire Ecologist, USA",
+    "Summer Fawn, Singer of Earth Songs.",
+    "Alan Watson Featherstone, Trees for Life, Scotland",
+    "Mahala Frye, Kitsap Peninsula, Washington",
+    "Dennis Garrity, EverGreening Alliance, Global",
+    "Paul Hawken, Author of Drawdown (2017) and Regeneration: Ending the Climate Crisis in One Generation.  (2021)",
+    "Minni Jain, India and UK.",
+    "Gregoire Lameureux, Kootenay Pemaculture, Canada",
+    "Andre Leu, Regeneration International, Australia",
+    "Nathan Lou, Mongol Tribe, California",
+    "Ilarion Merculieff , Alaska",
+    "Andrew Millison, Earth Repair Radio, Permaculture Rising, Oregon State University. Corvallis, Oregon ",
+    "Deborah Milton, Bainbridge Island, Washington",
+    "Art for Gaia",
+    "Yasmin Mohamud, Dry-land Solutions, Puntland, Somalia",
+    "Mazin Qumsiyeh, Institute for Biodiversity & Sustainability, Palestine",
+    "Issues of environmental justice and threats to our planet",
+    "Jim O’Donnell, Texas,",
+    "Peter Bruce-Iri, New Zealand",
+    "Precious Phiri, Regeneration International, Zimbabwe",
+    "Michael Pilarski, Global Earth Repair Foundation, Olympic Peninsula, Washington. Using Medicinal Plants in Restoration Plantings.",
+    "Margo Robbins, President, Cultural Fire Management Council, Yurok tribe, California",
+    "Ercilia Sahores, Regeneration International, Mexico, Chile",
+    "Datu Lanelio T. Sangcoan, Tribes and Natures Defenders, Philippines.",
+    "Jon Schull, EcoRestoration Alliance,",
+    "Judith Schwartz, Vermont, restoration author,",
+    "Brenda Selgado. Toltec healer. California and Nicaragua",
+    "Alex Slakie, Restorationist, Flora Northwest, Oregon",
+    "Michael G. Smith, Emerald Earth, Earth regeneration through natural building. California",
+    "Russ Speer, California, New Mexico.",
+    "Jan Spencer, Suburban Permaculture, Oregon",
+    "Colin Sternagel, Washington State,",
+    "Paul Cheoketen Wagner, Salish Sea,",
+    "Zachary Weiss, Elemental Ecosystems, USA",
+    "Marius Iragi Ziganiria, Jenga Project, Nakivale Refugee Camp, Uganda"
+]
+
+const PageTitle = ({ children, sx }: any) => {
+    return (
+        <Typography
+            sx={{
+                pb: 4,
+                "-webkit-text-stroke-width": "4px",
+                "-webkit-text-stroke-color": theme.palette.secondary.main,
+                ...sx
+            }}
+            textAlign="center"
+            fontSize={120}
+            fontFamily='Blackriver Bold, Roboto Condensed, "sans-serif"'
+        >{children}</Typography>
+    )
+}
 
 export const Speakers = () => {
     return (
-        <BasicPage>
-            <Typography
-                sx={{ pb: 4 }}
-                textAlign="center"
-                fontSize={120}
-                fontFamily='Six Caps, Roboto Condensed, "sans-serif"'
-            >
+        <BasicPage sx={{mb: 8}}>
+            <PageTitle>
                 Speakers
-            </Typography>
+            </PageTitle>
             <SpeakerGrid speakers={speakerList} />
+            <PageTitle>
+                And more
+            </PageTitle>
+            <Grid2 container spacing={6}>
+                {remainingSpeakers.map((speaker) => {
+                    return (
+                        <Grid2 xs={12} sm={4}>
+                            <Paper sx={{
+                                height: "100%",
+                                p: 2,
+                                display: "flex",
+                                flexDirection: "column",
+                                justifyContent: "center",
+                                alignItems: "center"
+                            }}>
+                                <Typography variant="h6" sx={{ pb: 1, color: "secondary.main" }} textAlign="center">
+                                    {speaker}
+                                </Typography>
+                            </Paper>
+                        </Grid2>
+                    )
+                })}
+
+            </Grid2>
         </BasicPage>
     )
 }
