@@ -7,6 +7,8 @@ import { WebGLGlobe } from "../../components/molecules/WebGLGlobe";
 import Ticker from "react-ticker";
 import { SpeakerGrid } from "../../components/molecules/SpeakerGrid";
 import { speakerList } from "../Speakers/Speakers";
+import { ColorButton } from "../../components/atoms/ColorButton";
+import { volunteerFormURL } from "../../constants";
 
 type BannerTextProps = { children: React.ReactNode }
 const BannerText = ({ children }: BannerTextProps) => {
@@ -61,9 +63,9 @@ const Banner = () => {
                                 </Typography>
                             </Button>
 
-                            <Button variant="contained" size="large" sx={{ px: 3, py: 2, mt: 2 }} >
+                            <Button href={volunteerFormURL} variant="contained" size="large" sx={{ px: 3, py: 2, mt: 2 }} >
                                 <Typography fontSize="1.25rem">
-                                    <Link to="/register-type">Volunteer</Link>
+                                    Volunteer
                                 </Typography>
                             </Button>
                         </Box>
@@ -117,10 +119,10 @@ const About = () => {
                         <Typography display="inline" sx={{ fontWeight: 700 }}>October 21-22</Typography> Keynote speakers, workshops and small group sessions. All presentations and workshops will take place online.
                     </Typography>
                     <Typography sx={{ color: "#000", mb: 2 }}>
-                        <Typography display="inline" sx={{ fontWeight: 700 }}>October 23</Typography> An in-person Day of Action will be taking place around the globe. We will broadcast live streams of these in-person events for you to follow along. Better yet, we encourage you to start your own!
+                        <Typography display="inline" sx={{ fontWeight: 700 }}>October 23</Typography> An in-person Day of Earth Repair Action will be taking place around the globe. We will broadcast live streams of these in-person events for you to follow along. Better yet, we encourage you to start your own!
                     </Typography>
                     <Typography sx={{ color: "#000", mb: 2 }}>
-                        <Typography display="inline" sx={{ fontWeight: 700 }}>October 24</Typography> Coalescing and crafting an International Plan of Action to present to the world
+                        <Typography display="inline" sx={{ fontWeight: 700 }}>October 24</Typography> Coalescing and crafting an Global Earth Repair Action Plan to present to the world
                     </Typography>
                 </Grid2>
             </Grid2>
@@ -196,11 +198,11 @@ const Splash = () => {
                     <SpeakerGrid speakers={speakerList} />
                     <Typography variant="h3" fontWeight="300" textAlign="center" sx={{ pt: 8 }}>
                         <Link to="/speakers">
-                            <Button variant="contained" sx={{ p: 4 }}>
+                            <ColorButton variant="contained" sx={{ p: 4 }}>
                                 <Typography variant="h5">
                                     See All Speakers
                                 </Typography>
-                            </Button>
+                            </ColorButton>
                         </Link>
                     </Typography>
                 </Container>
