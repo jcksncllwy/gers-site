@@ -13,6 +13,7 @@ import { AppProvider } from './contexts/AppProvider';
 import { RegistrationType } from './pages/RegistrationType/RegistrationType';
 import { Speakers } from './pages/Speakers/Speakers';
 import { Collaborators } from './pages/Collaborators/Collaborators';
+import { Sponsors } from './pages/Sponsors/Sponsors';
 
 export default function App() {
 
@@ -37,6 +38,10 @@ export default function App() {
             <Route
               path="collaborators"
               element={<Collaborators />}
+            />
+            <Route
+              path="sponsors"
+              element={<Sponsors />}
             />
             <Route
               path="thank-you"

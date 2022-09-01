@@ -3,8 +3,6 @@ import Grid2 from "@mui/material/Unstable_Grid2"
 import BasicPage from "../../components/layouts/BasicPage"
 import { theme } from "../../styling/theme"
 
-// Hello! This is a comment
-
 export const collaboratorList = [
     {
         name: 'Abundant Earth Foundation',
