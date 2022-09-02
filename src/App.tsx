@@ -7,13 +7,13 @@ import {
 
 import RegisterAttendee from './pages/RegisterAttendee/RegisterAttendee';
 import Splash from './pages/Splash/Splash';
-import Agenda from './pages/Agenda';
 import { ThankYou } from './pages/ThankYou/ThankYou';
 import { AppProvider } from './contexts/AppProvider';
 import { RegistrationType } from './pages/RegistrationType/RegistrationType';
 import { Speakers } from './pages/Speakers/Speakers';
 import { Collaborators } from './pages/Collaborators/Collaborators';
 import { Sponsors } from './pages/Sponsors/Sponsors';
+import { Agenda } from './pages/Agenda/Agenda';
 
 export default function App() {
 
@@ -40,16 +40,16 @@ export default function App() {
               element={<Collaborators />}
             />
             <Route
+              path="agenda"
+              element={<Agenda />}
+            />
+            <Route
               path="sponsors"
               element={<Sponsors />}
             />
             <Route
               path="thank-you"
               element={<ThankYou />}
-            />
-            <Route
-              path="agenda"
-              element={<Agenda />}
             />
           </Route>
         </Routes>

@@ -1,5 +1,6 @@
 import { Box, Paper, Typography } from "@mui/material"
 import Grid2 from "@mui/material/Unstable_Grid2"
+import { PageTitle } from "../../components/atoms/PageTitle"
 import BasicPage from "../../components/layouts/BasicPage"
 import { theme } from "../../styling/theme"
 
@@ -116,18 +117,9 @@ const goldColor = theme.palette.secondary.main
 export const Collaborators = () => {
     return (
         <BasicPage sx={{mb:4}}>
-            <Typography
-                sx={{
-                    pb: 4,
-                    "-webkit-text-stroke-width": "4px",
-                    "-webkit-text-stroke-color": goldColor
-                }}
-                textAlign="center"
-                fontSize={120}
-                fontFamily='Blackriver Bold, Roboto Condensed, "sans-serif"'
-            >
+            <PageTitle>
                 Collaborators
-            </Typography>
+            </PageTitle>
             <Box
                 display="flex"
                 flexDirection="column"

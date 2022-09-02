@@ -32,9 +32,10 @@ interface Props {
 
 const drawerWidth = 240;
 const navItems = {
+  'agenda': '/agenda',
   'speakers': '/speakers',
   'collaborators': '/collaborators',
-  'sponsorship': '/sponsors'
+  'sponsorship': '/sponsors',
 }
 
 type NavLinkProps = { children: React.ReactNode, underline?: boolean }
