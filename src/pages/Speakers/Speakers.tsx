@@ -3,6 +3,7 @@ import BasicPage from "../../components/layouts/BasicPage"
 import { SpeakerGrid } from "../../components/molecules/SpeakerGrid"
 import Grid2 from "@mui/material/Unstable_Grid2";
 import { theme } from "../../styling/theme"
+import { PageTitle } from "../../components/atoms/PageTitle";
 
 export type SpeakerType = {
     imageURL: string,
@@ -106,22 +107,6 @@ const remainingSpeakers = [
     "Zachary Weiss, Elemental Ecosystems, USA",
     "Marius Iragi Ziganiria, Jenga Project, Nakivale Refugee Camp, Uganda"
 ]
-
-const PageTitle = ({ children, sx }: any) => {
-    return (
-        <Typography
-            sx={{
-                pb: 4,
-                "-webkit-text-stroke-width": "4px",
-                "-webkit-text-stroke-color": theme.palette.secondary.main,
-                ...sx
-            }}
-            textAlign="center"
-            fontSize={120}
-            fontFamily='Blackriver Bold, Roboto Condensed, "sans-serif"'
-        >{children}</Typography>
-    )
-}
 
 export const Speakers = () => {
     return (
