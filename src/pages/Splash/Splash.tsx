@@ -4,7 +4,6 @@ import Grid2 from "@mui/material/Unstable_Grid2";
 import React from "react";
 import BannerPage from "../../components/layouts/BannerPage";
 import { WebGLGlobe } from "../../components/molecules/WebGLGlobe";
-import Ticker from "react-ticker";
 import { SpeakerGrid } from "../../components/molecules/SpeakerGrid";
 import { speakerList } from "../Speakers/Speakers";
 import { ColorButton } from "../../components/atoms/ColorButton";
