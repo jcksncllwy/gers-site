@@ -42,19 +42,6 @@ const Banner = () => {
                         <Box maxWidth="md">
                             <img src="https://ltfowyvtpuhuazsxpcvn.supabase.co/storage/v1/object/public/public-images/GERS%20Title%20and%20Date.png" />
                         </Box>
-                        <Typography
-                            fontFamily='Blackriver Bold, Roboto Condensed, "sans-serif"'
-                            fontSize={40}
-                            lineHeight={1.25}
-                            color='#fff'
-                            sx={{
-                                mt: -4,
-                                " -webkit-text-stroke-width": "1px",
-                                "-webkit-text-stroke-color": "black"
-                            }}
-                        >
-                            Will you heed Earth's call?
-                        </Typography>
                         <Box>
                             <Button variant="contained" size="large" sx={{ px: 3, py: 2, mt: 2, mr: 4 }} >
                                 <Typography fontSize="1.25rem">
