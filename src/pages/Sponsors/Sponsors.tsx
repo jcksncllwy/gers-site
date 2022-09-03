@@ -138,7 +138,7 @@ export const Sponsors = () => {
                     </SponsorOption>
 
                     <Grid2 xs={12} textAlign="center">
-                        <Button variant="outlined" sx={{
+                        <Button href={sponsorFormURL} variant="outlined" sx={{
                             fontSize: "1.5rem"
 
                         }}>
@@ -151,7 +151,7 @@ export const Sponsors = () => {
                     </Grid2>
 
                     <Grid2 xs={12} textAlign="center">
-                        <Button variant="outlined" sx={{
+                        <Button href={sponsorFormURL} variant="outlined" sx={{
                             fontSize: "1.5rem"
 
                         }}>

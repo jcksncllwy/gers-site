@@ -1,4 +1,5 @@
 import { Box, Button, Container, Paper, Typography } from "@mui/material";
+import {default as MLink} from "@mui/material/Link";
 import Link from '../../components/atoms/Link';
 import Grid2 from "@mui/material/Unstable_Grid2";
 import React from "react";
@@ -66,7 +67,7 @@ const Banner = () => {
             }}>
                 <Container>
                     <Typography variant="caption">
-                        An Online Ecosystem Restoration Conference by <Link underline to="https://globalearthrepairfoundation.org">GERF</Link>
+                        An Online Ecosystem Restoration Conference by <MLink href="https://globalearthrepairfoundation.org">GERF</MLink>
                     </Typography>
                 </Container>
             </Box>
