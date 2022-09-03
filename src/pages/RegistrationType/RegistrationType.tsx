@@ -39,7 +39,9 @@ export const RegistrationType = () => {
     const navigate = useNavigate();
 
     return (
-        <BasicPage maxWidth='sm'>
+        <BasicPage maxWidth='sm' sx={{
+            mb: 2
+        }}>
             <Box sx={{
                 display: 'flex',
                 flexDirection: 'column',

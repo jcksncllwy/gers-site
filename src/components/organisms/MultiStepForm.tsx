@@ -33,7 +33,18 @@ export const MultiStepForm = ({ title, subtitle, activeStep, stepNames, children
                         {subtitle}
                     </Typography>
 
-                    <Stepper activeStep={activeStep} sx={{ pt: 3, pb: 5, width: '100%' }}>
+                    <Stepper 
+                    activeStep={activeStep} 
+                    sx={{ 
+                        pt: 3, 
+                        pb: 5, 
+                        width: '100%',
+                        display: {
+                            xs: 'none',
+                            sm: 'inherit'
+                        }
+                    }}
+                    >
                         {stepNodes.map((stepNode, index) => (
                             <StepperStep key={stepNames[index]}>
                                 <StepperStepLabel>{stepNames[index]}</StepperStepLabel>

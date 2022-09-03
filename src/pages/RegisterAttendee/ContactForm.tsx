@@ -45,7 +45,13 @@ const ContactForm = ({ onSubmit }: Props) => {
             component="form"
             autoComplete="off"
             onSubmit={handleSubmissionAttempt}
-            sx={{width: '100%', px: 10}}
+            sx={{
+                width: '100%', 
+                px: {
+                    xs: 1,
+                    sm: 10
+                }
+            }}
         >
             <Typography variant="h6" gutterBottom>
                 Contact Info

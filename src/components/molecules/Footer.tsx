@@ -52,25 +52,25 @@ const Footer = ({ children }: Props) => {
                 <Grid2 xs={12} sm={6} >
 
                     <Grid2 container spacing={4}>
-                        <Grid2 xs={12} sm={3} sx={{ display: "flex", justifyContent: "center" }}>
+                        <Grid2 xs={6} sm={3} sx={{ display: "flex", justifyContent: "center" }}>
                             <SocialMediaIcon
                                 imageURL="https://www.facebook.com/images/fb_icon_325x325.png"
                                 linkURL={facebookURL}
                             />
                         </Grid2>
-                        <Grid2 xs={12} sm={3} sx={{ display: "flex", justifyContent: "center" }}>
+                        <Grid2 xs={6} sm={3} sx={{ display: "flex", justifyContent: "center" }}>
                             <SocialMediaIcon
                                 imageURL="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4f/Twitter-logo.svg/1200px-Twitter-logo.svg.png"
                                 linkURL={twitterURL}
                             />
                         </Grid2>
-                        <Grid2 xs={12} sm={3} sx={{ display: "flex", justifyContent: "center" }}>
+                        <Grid2 xs={6} sm={3} sx={{ display: "flex", justifyContent: "center" }}>
                             <SocialMediaIcon
                                 imageURL="https://upload.wikimedia.org/wikipedia/commons/9/95/Instagram_logo_2022.svg"
                                 linkURL={instagramURL}
                             />
                         </Grid2>
-                        <Grid2 xs={12} sm={3} sx={{ display: "flex", justifyContent: "center" }}>
+                        <Grid2 xs={6} sm={3} sx={{ display: "flex", justifyContent: "center" }}>
                             <SocialMediaIcon
                                 imageURL="https://cdn2.hubspot.net/hubfs/521324/youtube%20icon.png"
                                 linkURL={youtubeURL}

@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { useContext, useState } from 'react'
 import AppBar from '@mui/material/AppBar';
+import { default as MLink } from '@mui/material/Link';
 import Box from '@mui/material/Box';
 import Divider from '@mui/material/Divider';
 import Drawer from '@mui/material/Drawer';
@@ -32,6 +33,7 @@ interface Props {
 
 const drawerWidth = 240;
 const navItems = {
+  'home': "/",
   'agenda': '/agenda',
   'speakers': '/speakers',
   'collaborators': '/collaborators',
@@ -68,9 +70,11 @@ const DrawerAppBar = (props: Props) => {
       <List>
         {Object.entries(navItems).map(([name, to]) => (
           <ListItem key={name} disablePadding>
-            <ListItemButton sx={{ textAlign: 'center' }}>
-              <ListItemText primary={name} />
-            </ListItemButton>
+            <MLink href={to}>
+              <ListItemButton sx={{ textAlign: 'center' }}>
+                <ListItemText primary={name} />
+              </ListItemButton>
+            </MLink>
           </ListItem>
         ))}
       </List>

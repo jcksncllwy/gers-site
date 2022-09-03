@@ -15,7 +15,7 @@ const days = [`Day 1:
  2:30 – 3:30. Reports
 3:30 – 4:00 Ending remarks, song.
 `,
-`Day 2:
+    `Day 2:
 8:00 – 8:30 am: Opening ceremony
 8:30 – 9:00 How the summit works, schedules.
 9:00 – 10:00. Keynotes
@@ -27,13 +27,13 @@ const days = [`Day 1:
  2:30 – 3:30. Reports
 3:30 – 4:00 Ending remarks, song.
 `,
-`Day 3, Is Hands-on, in-person events held around the world. Decentralized, autonomous.
+    `Day 3, Is Hands-on, in-person events held around the world. Decentralized, autonomous.
 An introduction to the day will be posted at 8:00 am London time.
 In-person events set their own schedule.
 Livestreams, photos and reports will be posted on our website as they come in.
 Participants can watch live streams and photos as they come available
 `,
-`Day 4:
+    `Day 4:
 8:00 am – 8:30. Ceremony and Opening remarks
 8:30 -9:00. Introduction to the day. Global Earth Repair Action Plan: Goals and pathways.
 9:00 – 10:30. Concurrent presentations by authors of some of the best currently available global restoration plans. Q &A.
@@ -52,7 +52,13 @@ export const Agenda = () => {
             <PageTitle>
                 Agenda
             </PageTitle>
-            <Typography variant="h2" sx={{mb: 2}}>
+            <Typography sx={{
+                mb: 2,
+                fontSize: {
+                    xs: 40,
+                    sm: 80
+                }
+            }}>
                 72 Hours of programming over 3 days!
             </Typography>
             <Typography>
@@ -68,7 +74,7 @@ export const Agenda = () => {
             <Typography>
                 <Link href="https://en.wikipedia.org/wiki/Time_zone#/media/File:World_Time_Zones_Map.png">Here is a great map of the world’s time zones.</Link>
             </Typography>
-            <Typography sx={{mt: 2}} textAlign="center">
+            <Typography sx={{ mt: 2 }} textAlign="center">
                 Global Earth Repair Summit
             </Typography>
             <Typography textAlign="center">
@@ -80,9 +86,9 @@ export const Agenda = () => {
             <Typography>
                 Here is our current thinking. A work in progress.  This does not cover how we will work in caucuses and discussion rooms.  Comments, suggestions?
             </Typography>
-            {days.map((day)=>{
-                return(
-                    <Typography sx={{m: 2}}>
+            {days.map((day) => {
+                return (
+                    <Typography sx={{ m: 2 }}>
                         {day}
                     </Typography>
                 )

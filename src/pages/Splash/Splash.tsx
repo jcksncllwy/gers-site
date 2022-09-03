@@ -29,7 +29,7 @@ const Banner = () => {
     return (
         <>
             <Box sx={{ position: 'relative', backgroundColor: 'background.default' }}>
-                <WebGLGlobe boxProps={{ sx: { height: { sm: "200px", md: "800px" }, width: '100%' } }} />
+                <WebGLGlobe boxProps={{ sx: { height: { xs: "400px", md: "800px" }, width: '100%' } }} />
                 <Box
                     display='flex'
                     alignItems='center'
@@ -42,8 +42,8 @@ const Banner = () => {
                         <Box maxWidth="md">
                             <img src="https://ltfowyvtpuhuazsxpcvn.supabase.co/storage/v1/object/public/public-images/GERS%20Title%20and%20Date.png" />
                         </Box>
-                        <Box>
-                            <Button variant="contained" size="large" sx={{ px: 3, py: 2, mt: 2, mr: 4 }} >
+                        <Box textAlign="center">
+                            <Button variant="contained" size="large" sx={{ px: 3, py: 2, mt: 2 }} >
                                 <Typography fontSize="1.25rem">
                                     <Link to="/register-type">Register Now</Link>
                                 </Typography>
@@ -135,12 +135,29 @@ const Features = () => {
         <Box sx={{
             backgroundColor: "rgb(0,30,60)",
             color: "#fff",
-            py: 10,
-            px: 10
+            py: {
+                xs: 1,
+                sm: 10
+            },
+            px: {
+                xs: 1,
+                sm: 10
+            }
         }}>
-            <Paper sx={{ p: 4 }}>
+            <Paper sx={{
+                p: {
+                    xs: 2,
+                    sm: 4
+                }
+
+            }}>
                 <Grid2 container spacing={4}>
-                    <Grid2 xs={12} md={7} sx={{ pr: 4 }}>
+                    <Grid2 xs={12} md={7} sx={{
+                        pr:{
+                            xs: 0,
+                            sm: 4
+                        }
+                    }}>
                         <ul>
                             {
                                 features.map((feature) => {
@@ -174,9 +191,14 @@ const Splash = () => {
             <Box sx={{ backgroundColor: "#3187DE", py: 10 }}>
                 <Container sx={{ pb: 4 }}>
                     <Typography
-                        sx={{ pb: 4 }}
+                        sx={{ 
+                            pb: 4,
+                            fontSize: {
+                                xs: 60,
+                                sm: 120
+                            }
+                        }}
                         textAlign="center"
-                        fontSize={120}
                         fontFamily='Blackriver Bold, Roboto Condensed, "sans-serif"'
                     >
                         Speakers

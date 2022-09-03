@@ -71,7 +71,7 @@ export default function RegisterAttendee() {
   }
 
   return (
-    <BasicPage maxWidth='sm'>
+    <BasicPage maxWidth='sm' sx={{mb: 2}}>
       <MultiStepForm
         title="Registration"
         stepNames={['Contact info', 'Payment details', 'Confirmation']}
