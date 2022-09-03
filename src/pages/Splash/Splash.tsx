@@ -29,7 +29,7 @@ const Banner = () => {
     return (
         <>
             <Box sx={{ position: 'relative', backgroundColor: 'background.default' }}>
-                <WebGLGlobe boxProps={{ sx: { height: { xs: "400px", md: "800px" }, width: '100%' } }} />
+                <WebGLGlobe boxProps={{ sx: { height: { xs: "400px", sm: "600px", md: "800px" }, width: '100%' } }} />
                 <Box
                     display='flex'
                     alignItems='center'
@@ -43,7 +43,7 @@ const Banner = () => {
                             <img src="https://ltfowyvtpuhuazsxpcvn.supabase.co/storage/v1/object/public/public-images/GERS%20Title%20and%20Date.png" />
                         </Box>
                         <Box textAlign="center">
-                            <Button variant="contained" size="large" sx={{ px: 3, py: 2, mt: 2 }} >
+                            <Button variant="contained" size="large" sx={{ px: 3, py: 2, mt: 2, mr:{xs: 0, sm: 4} }} >
                                 <Typography fontSize="1.25rem">
                                     <Link to="/register-type">Register Now</Link>
                                 </Typography>
