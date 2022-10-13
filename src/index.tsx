@@ -8,10 +8,18 @@ const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 
+// Temp hack to redirect to other site
+window.location.replace("globalearthrepairfoundation.org/summit")
+
+/*
+Temp hack to redirect to other site
 
 root.render(
   <App />
 );
+*/
+
+
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
