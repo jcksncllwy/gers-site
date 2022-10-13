@@ -9,7 +9,7 @@ const root = ReactDOM.createRoot(
 );
 
 // Temp hack to redirect to other site
-window.location.replace("globalearthrepairfoundation.org/summit")
+window.location.replace("https://globalearthrepairfoundation.org/summit/")
 
 /*
 Temp hack to redirect to other site
